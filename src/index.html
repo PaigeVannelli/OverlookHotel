@@ -4,13 +4,23 @@
     <title>Overlook Hotel</title>
   </head>
   <body>
-    <header> 
-      <button class="info-button">HAMBURGER ICON</button>
+    <section class="sidebar"> 
+      <h2 class="welcome-text">Welcome User!</h2>
+      <p class="user-details">USER PROFILE</p>
+      <p class="total-spent">Total Spent: </p>
       <button class="search-button" id="searchButton">Search Bookings</button>
-      <button class="user-profile-button">USER PROFILE</button>
-    </header>
-    <main class="body">
-      <section class="login-form-section">
+    </section>
+    <main class="main-content">
+      <h2>All Bookings</h2>
+      <section class="user-bookings">
+        <article class="room-card">
+          <h2>Room Type</h2>
+          <p>Booking Date<p>
+          <p>Total Cost<p>
+        </article>
+
+      </section>
+      <!-- <section class="login-form-section">
         <form class="login-form">
           <ul>
             <label for="emailEntry" class="label">Username: </label>
@@ -31,8 +41,7 @@
             <button class="login-form-button" id="loginButton">Log In</button>
           </ul>
         </form>
-      </section>
+      </section> -->
     </main>
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>
