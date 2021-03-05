@@ -5,3 +5,14 @@ $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,1
 body {
   background: $primary-background;
 }
+
+header {
+  background-color: aquamarine;
+  height: 20%;
+}
+
+.login-form-section {
+  height: 30em;
+  width: 70%;
+  background-color: grey;
+}

@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>Overlook Hotel</title>
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
+    <header> 
+      <button class="info-button">HAMBURGER ICON</button>
+      <button class="search-button" id="searchButton">Search Bookings</button>
+      <button class="user-profile-button">USER PROFILE</button>
+    </header>
+    <main class="body">
+      <section class="login-form-section">
+        <form class="login-form">
+          <ul>
+            <label for="emailEntry" class="label">Username: </label>
+            <input class="email-input" id="passwordInput" type="text" placeholder="example@gmail.com">
+            <label for="passwordEntry" class="label">Password: </label>
+            <input class="password-input" id="passwordInput" type="text" placeholder="Password">
+            <button class="login-form-button" id="loginButton">Log In</button>
+          </ul>
+        </form>
+      </section>
+      <section class="main-display">
+        <form class="login-form">
+          <ul>
+            <label for="emailEntry" class="label">Username: </label>
+            <input class="email-input" id="passwordInput" type="text" placeholder="example@gmail.com">
+            <label for="passwordEntry" class="label">Password: </label>
+            <input class="password-input" id="passwordInput" type="text" placeholder="Password">
+            <button class="login-form-button" id="loginButton">Log In</button>
+          </ul>
+        </form>
+      </section>
+    </main>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>
