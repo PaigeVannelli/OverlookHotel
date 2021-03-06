@@ -33,5 +33,7 @@ describe('See if the tests are running', function() {
     expect(currentUser.userBookings.length).to.equal(2)
   })
 
+  it('should store all room data', function())
+
 
 });

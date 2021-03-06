@@ -1,40 +1,43 @@
 
 const fetchData = () => {
-    let userData =  fetch("http://localhost:3001/api/v1/users")
+    let allUserData =  fetch("http://localhost:3001/api/v1/customers")
         .then(response => response.json())
         .then(userData => {
             return userData
         })
         .catch(err => displayError(err))
 
-    let hydrationData = fetch("http://localhost:3001/api/v1/hydration")
+    let allRooms = fetch("http://localhost:3001/api/v1/rooms")
         .then(response => response.json())
+        // .then(data => console.log(data))
         .then(hydrationData => {
             return hydrationData;
         })
         .catch(err => displayError(err))
 
-    let activityData = fetch("http://localhost:3001/api/v1/activity")
+    let allBookings = fetch("http://localhost:3001/api/v1/bookings")
         .then(response => response.json())
+        // .then(data => console.log(data))
         .then(activityData => {
             return activityData;
         })
         .catch(err => displayError(err))
 
-    let sleepData = fetch("http://localhost:3001/api/v1/sleep")
-        .then(response => response.json())
-        .then(sleepData => {
-            return sleepData;
-        })
-        .catch(err => displayError(err));
+    // let sleepData = fetch("http://localhost:3001/api/v1/sleep")
+    //     .then(response => response.json())
+    //     .then(sleepData => {
+    //         return sleepData;
+    //     })
+    //     .catch(err => displayError(err));
 
-        return Promise.all([userData, hydrationData, activityData, sleepData])
+        return Promise.all([allUserData, allRooms, allBookings])
         .then(data => {
           let allData = {}
-          allData.userData = data[0].userData;
-          allData.hydrationData = data[1].hydrationData;
-          allData.activityData = data[2].activityData;
-          allData.sleepData = data[3].sleepData;
+          allData.allUserData = data[0].customers;
+          allData.allRooms = data[1].rooms;
+          allData.allBookings = data[2].bookings;
           return allData;
         });
 }
+
+export default fetchData
