@@ -16,10 +16,6 @@ class User {
         })
         return currentCustomer.name
     }
-
-    addRoomData() {
-        
-    }
 }
 
 export default User

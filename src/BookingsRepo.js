@@ -14,7 +14,6 @@ class BookingsRepo {
         }
     }
 
-    //should filter by user 
     // should filter by date 
 }
 
