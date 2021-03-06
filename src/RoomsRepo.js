@@ -17,7 +17,14 @@ class RoomsRepo {
         return detailedBookings
     }
 
-    returnTotalCost(bookings)
+    returnTotalCost(bookings) {
+        const detailedBookings = this.returnDetailedRoomData(bookings)
+        let totalCost = 0
+        detailedBookings.forEach(booking => {
+            totalCost += booking.costPerNight
+        })
+        return totalCost
+    }
 }
 
 export default RoomsRepo

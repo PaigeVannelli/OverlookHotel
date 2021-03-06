@@ -17,12 +17,14 @@ describe('Test RoomRepo Functionality', function() {
   let newBookingsRepo 
   let allRooms = rooms;
   let newRoomsRepo
+  let userBookings
 
   beforeEach(function() {
     id = 3
     newBookingsRepo = new BookingsRepo(allBookings)
     currentUser = new User(id, customerData, bookingsData)
     newRoomsRepo = new RoomsRepo(allRooms)
+    userBookings = newBookingsRepo.filterByUser(2)
   });
 
   it('should store all rooms data', function() {
@@ -30,13 +32,13 @@ describe('Test RoomRepo Functionality', function() {
   })
 
   it('should be able to add room details to bookings', function() {
-      let userBookings = newBookingsRepo.filterByUser(2)
       let detailedUserBooking = newRoomsRepo.returnDetailedRoomData(userBookings)
       expect(detailedUserBooking[0].costPerNight).to.equal(374.67)
   })
 
   it('should calcuate and return total cost', function() {
-      
+      let totalCost = newRoomsRepo.returnTotalCost(userBookings)
+      expect(totalCost).to.equal(575.06)
   })
 
 })
