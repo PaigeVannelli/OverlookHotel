@@ -45,7 +45,7 @@ function displayBookings(userBookings) {
 function displayRoomCards(booking) {
     const userBookingCard = document.getElementById('userBookings')
         userBookingCard.insertAdjacentHTML('beforeend',
-        `<article class="room-card id="${booking.id}">
+        `<article class="room-card" id="${booking.id}">
           <h2>Room Type ${booking.roomType}</h2>
           <p>date: ${booking.date}<p>
           <p>Cost per night: ${booking.costPerNight}<p>

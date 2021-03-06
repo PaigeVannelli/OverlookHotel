@@ -1,0 +1,16 @@
+@import '_variables';
+
+@mixin all-buttons {
+    border-radius: 5%;
+    background-color: $highlight-one;
+}
+
+@mixin all-cards {
+    border-radius: 5%;
+    opacity: 90%;
+    height: 15em;
+    width: 30%;
+    margin: 5px;
+    background-color: $highlight-one;
+    justify-content: center;
+}
