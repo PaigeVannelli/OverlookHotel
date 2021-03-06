@@ -1,13 +1,13 @@
 
 
 class User {
-    constructor(userID, customers, bookings) {
+    constructor(userID, customers) {
         // shoud have a user id name and all their bookings 
         this.id = userID;
         this.customers = customers;
-        this.allBookings = bookings;
+        // this.allBookings = bookings;
         this.name = this.fetchName();
-        this.userBookings = this.fetchBookings();
+        this.userBookings = [];
     }
 
     fetchName() {
@@ -15,16 +15,6 @@ class User {
             return customer.id === this.id
         })
         return currentCustomer.name
-    }
-
-    fetchBookings() {
-        const currentCustomerBookings = this.allBookings.filter(booking => {
-            return booking.userID === this.id
-        })
-        return currentCustomerBookings.sort((a, b) => {
-           return a.date - b.date
-        })
-        // Need to sort bookings by date 
     }
 
     addRoomData() {
