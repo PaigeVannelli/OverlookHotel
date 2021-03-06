@@ -2,6 +2,7 @@ import chai from 'chai';
 import User from '../src/User';
 import customers from './all-test-data/user-data';
 import bookings from './all-test-data/bookings-data';
+import BookingsRepo from '../src/BookingsRepo';
 const expect = chai.expect;
 
 describe('See if the tests are running', function() {
@@ -9,15 +10,13 @@ describe('See if the tests are running', function() {
   let currentUser;
   let id;
   let customerData = customers;
-  let bookingsData = bookings;
+  let allBookings = bookings;
+  let newBookingsRepo 
 
   beforeEach(function() {
     id = 2
-    currentUser = new User(id, customerData, bookingsData)
-  });
-
-  it('should return true', function() {
-    expect(true).to.equal(true);
+    newBookingsRepo = new BookingsRepo(allBookings)
+    currentUser = new User(id, customerData)
   });
 
   it('should store an id', function() {
@@ -28,12 +27,12 @@ describe('See if the tests are running', function() {
     expect(currentUser.name).to.equal("Rocio Schuster")
   })
 
-  it('should store all booking data by user id', function() {
-    currentUser.fetchBookings()
-    expect(currentUser.userBookings.length).to.equal(2)
-  })
-
-  it('should store all room data', function())
+  // it('should store all booking data by user id', function() {
+  //   const userBookings = newBookingsRepo.filterByUser(2)
+  //   const currentUser.userBookings = userBookings;
+  //   console.log(currentUser)
+  //   // expect(currentUser.userBookings.length).to.equal(2)
+  // })
 
 
 });
