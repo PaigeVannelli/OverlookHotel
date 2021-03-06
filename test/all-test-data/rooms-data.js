@@ -78,7 +78,15 @@ const rooms = [
     "bedSize": "twin",
     "numBeds": 1,
     "costPerNight": 497.64
-    }
+    },
+    {
+    "number": 19,
+    "roomType": "single room",
+    "bidet": false,
+    "bedSize": "queen",
+    "numBeds": 1,
+    "costPerNight": 374.67
+    },
 ]
 
 export default rooms

@@ -7,7 +7,7 @@ import BookingsRepo from '../src/BookingsRepo';
 import RoomsRepo from '../src/RoomsRepo';
 const expect = chai.expect;
 
-describe('Test BookingRepo Functionality', function() {
+describe('Test RoomRepo Functionality', function() {
 
   let currentUser;
   let id;
@@ -29,6 +29,14 @@ describe('Test BookingRepo Functionality', function() {
     expect(newRoomsRepo.allRooms).to.equal(allRooms)
   })
 
-  it('should be able to add room details to bookings')
+  it('should be able to add room details to bookings', function() {
+      let userBookings = newBookingsRepo.filterByUser(2)
+      let detailedUserBooking = newRoomsRepo.returnDetailedRoomData(userBookings)
+      expect(detailedUserBooking[0].costPerNight).to.equal(374.67)
+  })
+
+  it('should calcuate and return total cost', function() {
+      
+  })
 
 })
