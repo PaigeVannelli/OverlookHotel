@@ -43,10 +43,9 @@ function displayBookings(userBookings) {
 }
 
 function displayRoomCards(booking) {
-    console.log(booking)
     const userBookingCard = document.getElementById('userBookings')
         userBookingCard.insertAdjacentHTML('beforeend',
-        `<article class="room-card id="${booking.id}">
+        `<article class="room-card" id="${booking.id}">
           <h2>Room Type ${booking.roomType}</h2>
           <p>date: ${booking.date}<p>
           <p>Cost per night: ${booking.costPerNight}<p>
@@ -54,5 +53,8 @@ function displayRoomCards(booking) {
     )
 }
 
-// function displayUserInfo(currentUser, )
+function displayUserInfo(currentUser, totalCost) {
+    document.getElementById('welcomeText').innerHTML = `Welcome ${currentUser.name}!`
+    document.getElementById('totalSpent').innerHTML = `Total Spent:  ${totalCost}`
+}
 

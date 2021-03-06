@@ -1,20 +1,29 @@
+
+@import '_mixins';
+@import '_variables';
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+// $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 ;
+
+* {
+  margin: none;
+}
 
 body {
   // background: $primary-background;
   display: flex;
   flex-direction: row;
   height: 100%;
+  margin: 0px;
+  padding: 0px;
 }
 
 //~~~~~~~~~~~~~~ Sidebar Styling ~~~~~~~~~~~//
 
 .sidebar {
-  background-color: aquamarine;
-  height: 90em;
-  width: 30%;
+  background-color: $main-color;
+  height: 100em;
+  width: 25%;
   display: flex;
   flex-direction: column;
 }
@@ -22,15 +31,31 @@ body {
 
 //~~~~~~~~~~~~~~~ Main Section Styling ~~~~~~~//
 
-// .user.bookings {
-//   background-color:;
-// }
+.main-content {
+  background-color: $background-color;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-bookings {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: center;
+}
 
 //~~~~~~~~~~~~~~~ Card Styling ~~~~~~~~~~~~~//
 
 .room-card {
-  background-color: grey;
-  // background-opacity: 70%; 
+  @include all-cards
+  // background-color: grey;
+  // height: 15em;
+  // width: 30%;
+  // margin: 5px;
+  // align-self: center;
+  // justify-self: center;
 }
 
 
@@ -39,5 +64,11 @@ body {
 .login-form-section {
   height: 30em;
   width: 70%;
-  background-color: grey;
+  background-color: $highlight-one;
+}
+
+#blockColorblindContent {
+  display: none;
+  // height: 0px;
+  // width: 0px;
 }
