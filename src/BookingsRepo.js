@@ -23,7 +23,11 @@ class BookingsRepo {
                 return booking.roomNumber === room.number
             })
         })
-        return availableRooms
+        if (availableRooms.length > 0) {
+            return availableRooms
+        } else {
+            return 'no available rooms'
+        }
         // const bookedRoomNumber = []
         // bookedRooms.forEach(booking => {
         //     bookedRoomNumber.push(booking.roomNumber)
@@ -35,18 +39,23 @@ class BookingsRepo {
         // return availableRooms
     }
 
-    // filterByRoom(roomsByType, date) {
-    //     let filteredRooms = roomsByType.filter(room => {
-    //         return !this.filterByDate(date).some(booking => {
-    //             return booking.roomNumber === room.number
-    //         })
-    //     })
-    //     if (filteredRooms.length > 0) {
-    //         return filteredRooms
-    //     } else {
-    //         return 'no available rooms'
-    //     }
-    // }
+    filterByType(roomsByDate, type) {
+        if (type !== 'all rooms') {
+            let roomsByType = roomsByDate.filter(room => {
+                return room.roomType === type
+                // return !this.filterByDate(date).some(booking => {
+                //     return booking.roomNumber === room.number
+                // })
+            })
+            if (roomsByType.length > 0) {
+                return roomsByType
+            } else {
+                return 'no available rooms'
+            }
+        } else {
+            return roomsByDate
+        }
+    }
 }
 
 export default BookingsRepo

@@ -46,6 +46,18 @@ describe('Test BookingRepo Functionality', function() {
     expect(filterByRoom.length).to.equal(9)
   })
 
+  it('should fiter rooms by type', function() {
+    const filterByDate = newBookingsRepo.filterByDate(allRooms, '2020/02/11')
+    const filterByType = newBookingsRepo.filterByType(filterByDate, 'suite')
+    expect(filterByType.length).to.equal(1)
+  })
+
+  it('should return all rooms if no room if no room is specified', function() {
+    const filterByDate = newBookingsRepo.filterByDate(allRooms, '2020/02/11')
+    const filterByType = newBookingsRepo.filterByType(filterByDate, 'all rooms')
+    expect(filterByType.length).to.equal(9)
+  })
+
   // it('should return all room if no rooms are booked', function() {
   //   const filteredByType = newRoomsRepo.filterByType("single room")
   //   const filterByRoom = newBookingsRepo.filterByRoom(filteredByType, '2021/02/11')

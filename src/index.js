@@ -111,8 +111,8 @@ function filterByDate(date) {
     // let roomsBytype = newRoomsRepo.filterByType(roomType)
     // we want to just filter by date first and then connect filter by type second 
     // let filteredRooms = newBookingsRepo.filterByRoom(roomsBytype, date)
-    let filteredRoomsByDate = newBookingsRepo.filterByDate(date)
-    console.log(filteredRoomsByDate)
+    let filteredRoomsByDate = newBookingsRepo.filterByDate(newRoomsRepo.allRooms, date)
+    
     let detailedSearchedRooms = newRoomsRepo.returnDetailedRoomData(filteredRoomsByDate)
     displayAvailableRooms(detailedSearchedRooms, date)
     showSearchData()
@@ -137,7 +137,7 @@ function displayAvailableRooms(userBookings, date) {
 }
 
 function showSearchData() {
-    display("searchForm", true);
+    // display("searchForm", true);
     // display("userBookings", false);
     display("searchedRoomsSection", false)
 }
