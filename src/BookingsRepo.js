@@ -14,22 +14,46 @@ class BookingsRepo {
         }
     }
 
-    filterByDate(date) { 
-        return this.allBookings.filter(booking => {
-            return booking.date === date
+    filterByDate(allRooms, date) { 
+        let bookedRooms = this.allBookings.filter(booking => {
+            return booking.date == date
         })
-    }
-
-    filterByRoom(roomsByType, date) {
-        let filteredRooms = roomsByType.filter(room => {
-            return !this.filterByDate(date).some(booking => {
+        let availableRooms = allRooms.filter(room => {
+            return !bookedRooms.some(booking => {
                 return booking.roomNumber === room.number
             })
         })
-        if (filteredRooms.length > 0) {
-            return filteredRooms
+        if (availableRooms.length > 0) {
+            return availableRooms
         } else {
             return 'no available rooms'
+        }
+        // const bookedRoomNumber = []
+        // bookedRooms.forEach(booking => {
+        //     bookedRoomNumber.push(booking.roomNumber)
+        // })
+        // console.log(bookedRoomNumber)
+        // let availableRooms = allRooms.filter(room => {
+        //     return !bookedRoomNumber.includes(room.number)
+        // })
+        // return availableRooms
+    }
+
+    filterByType(roomsByDate, type) {
+        if (type !== 'all rooms') {
+            let roomsByType = roomsByDate.filter(room => {
+                return room.roomType === type
+                // return !this.filterByDate(date).some(booking => {
+                //     return booking.roomNumber === room.number
+                // })
+            })
+            if (roomsByType.length > 0) {
+                return roomsByType
+            } else {
+                return 'no available rooms'
+            }
+        } else {
+            return roomsByDate
         }
     }
 }

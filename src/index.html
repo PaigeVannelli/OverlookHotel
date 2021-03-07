@@ -11,7 +11,30 @@
       <button class="search-button" id="startSearchButton">Search Bookings</button>
     </section>
     <main class="main-content">
-      <div class="all-bookings" id="userBookings">
+      <section class="search-container hidden" id="searchForm">
+        <form class="search-form">
+            <label for="dateEntry" class="label">Dates: </label>
+            <input class="date-input" id="dateInput" type="date" placeholder="search dates" min="2021-03-02">
+            <label for="roomTypeEntry" class="label">Room Type: </label>
+            <!-- <input class="room-type-input" id="roomTypeInput"> -->
+            <select id="roomTypeSearch" name="roomType">
+              <option value="all rooms">All Rooms</option>
+              <option value="single room">Single Room</option>
+              <option value="junior suite">Junior Suite</option>
+              <option value="suite">Suite</option>
+              <option value="residential suite">Residential Suite</option>
+            </select>            
+            <button class="search-button" id="searchBookingsButton">Search Bookings</button>
+        </form>
+      </section>
+      <div class="all-bookings" id="roomsDisplay">
+        <h2 id="pageTitle">All Bookings</h2>
+        <div class="card-container">
+          <section class="user-bookings" id="allRooms">
+          </section>
+        </div>
+      </div>
+      <!-- <div class="all-bookings" id="userBookings">
         <h2>All Bookings</h2>
         <div class="card-container">
           <section class="user-bookings" id="userBookings">
@@ -24,22 +47,7 @@
           <section class="user-bookings" id="searchedRooms">
           </section>
         </div>
-      </div>
-      <section class="search-container hidden" id="searchForm">
-        <form class="search-form">
-            <label for="dateEntry" class="label">Dates: </label>
-            <input class="date-input" id="dateInput" type="date" placeholder="search dates" min="2021-03-02">
-            <label for="roomTypeEntry" class="label">Room Type: </label>
-            <!-- <input class="room-type-input" id="roomTypeInput"> -->
-            <select id="roomTypeSearch" name="roomType">
-              <option value="single room">Single Room</option>
-              <option value="junior suite">Junior Suite</option>
-              <option value="suite">Suite</option>
-              <option value="residential suite">Residential Suite</option>
-            </select>            
-            <button class="search-button" id="searchBookingsButton">Search Bookings</button>
-        </form>
-      </section>
+      </div> -->
       <!-- <section class="login-form-section">
         <form class="login-form">
           <ul>
