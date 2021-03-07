@@ -5,6 +5,7 @@ import User from './User'
 import fetchData from './get-data'
 import BookingsRepo from './BookingsRepo'
 import RoomsRepo from './RoomsRepo'
+import postUserBooking from './post-data'
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 
@@ -14,14 +15,20 @@ import './images/turing-logo.png'
 let currentUser
 let newRoomsRepo
 let newBookingsRepo
+let searchDate
 
 
 const startSearchButton = document.getElementById('startSearchButton')
 const searchBookingsButton = document.getElementById('searchBookingsButton')
+// const userBookingCard = document.getElementById('userBookings')
+const searchedRooms = document.getElementById('searchedRooms')
+
 
 window.addEventListener('load', displayUserData);
 startSearchButton.addEventListener('click', displaySearchForm);
 searchBookingsButton.addEventListener('click', searchBookings);
+searchedRoomsSection.addEventListener('click', bookRoom)
+
 
 
 function displayUserData() {
@@ -32,6 +39,7 @@ function displayUserData() {
         newRoomsRepo = new RoomsRepo(allData.allRooms)
         // do I want to move this function into find details below?
         let userBookings = newBookingsRepo.filterByUser(currentUser.id)
+        currentUser.userBookings = userBookings
         findDetailedUserData(newRoomsRepo, userBookings)
     })
 }
@@ -83,24 +91,23 @@ function display(element, isHidden) {
 function searchBookings() {
     event.preventDefault()
     let roomType = document.getElementById('roomTypeSearch').value
-    let date = document.getElementById('dateInput').value
-    filterSearchData(roomType, date)
+    searchDate = document.getElementById('dateInput').value
+    filterSearchData(roomType, searchDate)
 }
 
 function filterSearchData(roomType, date) {
     let roomsBytype = newRoomsRepo.filterByType(roomType)
     let filteredRooms = newBookingsRepo.filterByRoom(roomsBytype, date)
     let detailedSearchedRooms = newRoomsRepo.returnDetailedRoomData(filteredRooms)
-    console.log(detailedSearchedRooms)
     displayAvailableRooms(detailedSearchedRooms, date)
     showSearchData()
 }
 
 function displayAvailableRooms(userBookings, date) {
-    const userBookingCard = document.getElementById('userBookings')
-    userBookingCard.innerHTML = ''
+    // const userBookingCard = document.getElementById('userBookings')
+    searchedRooms.innerHTML = ''
     userBookings.forEach(booking => {
-        userBookingCard.insertAdjacentHTML('beforeend',
+        searchedRooms.insertAdjacentHTML('beforeend',
         `<article class="room-card" id="${booking.id}">
           <h2>Room Number ${booking.number}</h2>
           <h2>Room Type ${booking.roomType}</h2>
@@ -108,7 +115,7 @@ function displayAvailableRooms(userBookings, date) {
           <p>bed type: ${booking.bedSize}<p>
           <p>Number of beds: ${booking.numBeds}<p>
           <p>Cost per night: ${booking.costPerNight}<p>
-          <button id="${booking.id}">BOOK NOW</button>
+          <button id="bookNowButton+${booking.number}">BOOK NOW</button>
         </article>`
         )
     })
@@ -116,5 +123,36 @@ function displayAvailableRooms(userBookings, date) {
 
 function showSearchData() {
     display("searchForm", true);
-    display("userBookings", false)
+    // display("userBookings", false);
+    display("searchedRoomsSection", false)
+}
+
+function bookRoom(event) {
+    if (event.target.id.includes("bookNowButton")) {
+        const roomNumber = parseInt(event.target.id.split('+')[1])
+        const dateReformat = searchDate.split('-').join('/')
+        postBooking(roomNumber, dateReformat)
+    }
+}
+
+function postBooking(roomNumber, dateReformat) {
+    let userBooking = {
+        "userID": currentUser.id,
+        "date": dateReformat, 
+        "roomNumber": roomNumber
+    }
+
+    postUserBooking(userBooking)
+    .then(confirmation => {
+        searchedRooms.innerHTML = ''
+        searchedRooms.insertAdjacentHTML('beforeend',
+            `<article class="room-card booking-confirmation" id="${confirmation.newBooking.id}">
+            <p>Congratulations! Your booking was successful. See confirmation details below:</p>
+            <h2>Room Number: ${confirmation.newBooking.roomNumber}</h2>
+            <h2>Confirmation Number: ${confirmation.newBooking.id}</h2>
+            <p>date: ${searchDate}<p>
+            </article>`
+        )
+        currentUser.userBookings.push(confirmation.newBooking)
+    })
 }
