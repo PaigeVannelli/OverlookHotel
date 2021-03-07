@@ -18,7 +18,7 @@ let newBookingsRepo
 let searchDate
 
 
-const startSearchButton = document.getElementById('startSearchButton')
+// const startSearchButton = document.getElementById('startSearchButton')
 const searchBookingsButton = document.getElementById('searchBookingsButton')
 // const userBookingCard = document.getElementById('userBookings')
 // const searchedRooms = document.getElementById('searchedRooms')
@@ -27,7 +27,7 @@ const allRooms = document.getElementById('allRooms')
 
 
 window.addEventListener('load', displayUserData);
-startSearchButton.addEventListener('click', displaySearchForm);
+// startSearchButton.addEventListener('click', displaySearchForm);
 searchBookingsButton.addEventListener('click', searchBookings);
 allRooms.addEventListener('click', bookRoom)
 
@@ -77,11 +77,11 @@ function displayUserInfo(currentUser, totalCost) {
 }
 
 
-function displaySearchForm() {
-    document.getElementById('pageTitle').innerHTML = ''
-    display("searchForm", false);
-    display("allRooms", true)
-}
+// function displaySearchForm() {
+//     document.getElementById('pageTitle').innerHTML = ''
+//     display("searchForm", false);
+//     display("allRooms", true)
+// }
 
 function display(element, isHidden) {
     if (isHidden) {

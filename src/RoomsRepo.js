@@ -23,7 +23,7 @@ class RoomsRepo {
         detailedBookings.forEach(booking => {
             totalCost += booking.costPerNight
         })
-        return totalCost
+        return totalCost.toFixed(2)
     }
 
     filterByType(type) {
