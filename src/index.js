@@ -14,14 +14,20 @@ import './images/turing-logo.png'
 let currentUser
 let newRoomsRepo
 let newBookingsRepo
+let searchDate
 
 
 const startSearchButton = document.getElementById('startSearchButton')
 const searchBookingsButton = document.getElementById('searchBookingsButton')
+// const userBookingCard = document.getElementById('userBookings')
+const searchedRoomsSection = document.getElementById('searchedRoomsSection')
+
 
 window.addEventListener('load', displayUserData);
 startSearchButton.addEventListener('click', displaySearchForm);
 searchBookingsButton.addEventListener('click', searchBookings);
+searchedRoomsSection.addEventListener('click', bookRoom)
+
 
 
 function displayUserData() {
@@ -83,8 +89,8 @@ function display(element, isHidden) {
 function searchBookings() {
     event.preventDefault()
     let roomType = document.getElementById('roomTypeSearch').value
-    let date = document.getElementById('dateInput').value
-    filterSearchData(roomType, date)
+    searchDate = document.getElementById('dateInput').value
+    filterSearchData(roomType, searchDate)
 }
 
 function filterSearchData(roomType, date) {
@@ -97,10 +103,10 @@ function filterSearchData(roomType, date) {
 }
 
 function displayAvailableRooms(userBookings, date) {
-    const userBookingCard = document.getElementById('userBookings')
-    userBookingCard.innerHTML = ''
+    // const userBookingCard = document.getElementById('userBookings')
+    searchedRoomsSection.innerHTML = ''
     userBookings.forEach(booking => {
-        userBookingCard.insertAdjacentHTML('beforeend',
+        searchedRoomsSection.insertAdjacentHTML('beforeend',
         `<article class="room-card" id="${booking.id}">
           <h2>Room Number ${booking.number}</h2>
           <h2>Room Type ${booking.roomType}</h2>
@@ -108,7 +114,7 @@ function displayAvailableRooms(userBookings, date) {
           <p>bed type: ${booking.bedSize}<p>
           <p>Number of beds: ${booking.numBeds}<p>
           <p>Cost per night: ${booking.costPerNight}<p>
-          <button id="${booking.id}">BOOK NOW</button>
+          <button id="bookNowButton+${booking.number}">BOOK NOW</button>
         </article>`
         )
     })
@@ -116,9 +122,14 @@ function displayAvailableRooms(userBookings, date) {
 
 function showSearchData() {
     display("searchForm", true);
-    display("userBookings", false)
+    // display("userBookings", false);
+    display("searchedRoomsSection", false)
 }
 
-function bookRoom() {
-    
+function bookRoom(event) {
+    if (event.target.id.includes("bookNowButton")) {
+        const roomNumber = parseInt(event.target.id.split('+')[1])
+        const dateReformat = searchDate.split('-').join('/')
+        currentUser.bookRoom(roomNumber, dateReformat)
+    }
 }
