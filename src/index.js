@@ -18,7 +18,7 @@ let newBookingsRepo
 let searchDate
 
 
-const startSearchButton = document.getElementById('startSearchButton')
+// const startSearchButton = document.getElementById('startSearchButton')
 const searchBookingsButton = document.getElementById('searchBookingsButton')
 // const userBookingCard = document.getElementById('userBookings')
 // const searchedRooms = document.getElementById('searchedRooms')
@@ -27,7 +27,7 @@ const allRooms = document.getElementById('allRooms')
 
 
 window.addEventListener('load', displayUserData);
-startSearchButton.addEventListener('click', displaySearchForm);
+// startSearchButton.addEventListener('click', displaySearchForm);
 searchBookingsButton.addEventListener('click', searchBookings);
 allRooms.addEventListener('click', bookRoom)
 
@@ -64,24 +64,24 @@ function displayRoomCards(booking) {
     // const userBookingCard = document.getElementById('userBookings')
         allRooms.insertAdjacentHTML('beforeend',
         `<article class="room-card" id="${booking.id}">
-          <h2>Room Type ${booking.roomType}</h2>
-          <p>date: ${booking.date}<p>
-          <p>Cost per night: ${booking.costPerNight}<p>
+          <h2 class="title card-text">${booking.roomType}</h2>
+          <p class="card-text">date: ${booking.date}<p>
+          <p class="card-text">Cost per night: ${booking.costPerNight}<p>
         </article>`
     )
 }
 
 function displayUserInfo(currentUser, totalCost) {
-    document.getElementById('welcomeText').innerHTML = `Welcome ${currentUser.name}!`
+    document.getElementById('welcomeText').innerHTML = `${currentUser.name}`
     document.getElementById('totalSpent').innerHTML = `Total Spent:  ${totalCost}`
 }
 
 
-function displaySearchForm() {
-    document.getElementById('pageTitle').innerHTML = ''
-    display("searchForm", false);
-    display("allRooms", true)
-}
+// function displaySearchForm() {
+//     document.getElementById('pageTitle').innerHTML = ''
+//     display("searchForm", false);
+//     display("allRooms", true)
+// }
 
 function display(element, isHidden) {
     if (isHidden) {
@@ -102,8 +102,16 @@ function searchBookings() {
 function searchRooms(date, roomType) {
     let filteredRoomsByDate = newBookingsRepo.filterByDate(newRoomsRepo.allRooms, date)
     let filteredRoomsByType = newBookingsRepo.filterByType(filteredRoomsByDate, roomType)
-    let detailedSearchedRooms = newRoomsRepo.returnDetailedRoomData(filteredRoomsByType)
-    displayAvailableRooms(detailedSearchedRooms, date)
+    displayRooms(filteredRoomsByType, date)
+}
+
+function displayRooms(filteredRoomsByType, date) {
+    if (filteredRoomsByType === 'no available rooms') {
+        allRooms.innerHTML = 'All rooms boooked, please try adjusting search'
+    } else {
+        let detailedSearchedRooms = newRoomsRepo.returnDetailedRoomData(filteredRoomsByType)
+        displayAvailableRooms(detailedSearchedRooms, date)
+    }
     showSearchData()
 }
 
@@ -113,12 +121,12 @@ function displayAvailableRooms(userBookings, date) {
     userBookings.forEach(booking => {
         allRooms.insertAdjacentHTML('beforeend',
         `<article class="room-card" id="${booking.id}">
-          <h2>Room Number ${booking.number}</h2>
-          <h2>Room Type ${booking.roomType}</h2>
-          <p>date: ${date}<p>
-          <p>bed type: ${booking.bedSize}<p>
-          <p>Number of beds: ${booking.numBeds}<p>
-          <p>Cost per night: ${booking.costPerNight}<p>
+          <h2 class="title card-text room-number">#${booking.number}</h2>
+          <h2 class="title card-text">${booking.roomType}</h2>
+          <p class="card-text">${date}<p>
+          <p class="card-text">bed type: ${booking.bedSize}<p>
+          <p class="card-text">Number of beds: ${booking.numBeds}<p>
+          <p class="card-text">Cost per night: ${booking.costPerNight}<p>
           <button id="bookNowButton+${booking.number}">BOOK NOW</button>
         </article>`
         )
@@ -151,10 +159,10 @@ function postBooking(roomNumber, dateReformat) {
         allRooms.innerHTML = ''
         allRooms.insertAdjacentHTML('beforeend',
             `<article class="room-card booking-confirmation" id="${confirmation.newBooking.id}">
-            <p>Congratulations! Your booking was successful. See confirmation details below:</p>
-            <h2>Room Number: ${confirmation.newBooking.roomNumber}</h2>
-            <h2>Confirmation Number: ${confirmation.newBooking.id}</h2>
-            <p>date: ${searchDate}<p>
+            <p class="title card-text">Congratulations! Your booking was successful. See confirmation details below:</p>
+            <h2 class="card-text">Room Number: ${confirmation.newBooking.roomNumber}</h2>
+            <h2 class="card-text">Confirmation Number: ${confirmation.newBooking.id}</h2>
+            <p class="card-text">date: ${searchDate}<p>
             </article>`
         )
         currentUser.userBookings.push(confirmation.newBooking)
