@@ -41,4 +41,9 @@ describe('Test RoomRepo Functionality', function() {
       expect(totalCost).to.equal(575.06)
   })
 
+  it('should be able to filter rooms by date and type', function() {
+    let allSuites = newRoomsRepo.filterByType("suite")
+    expect(allSuites[0].number).to.equal(2)
+  })
+
 })
