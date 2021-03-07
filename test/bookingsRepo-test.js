@@ -40,21 +40,22 @@ describe('Test BookingRepo Functionality', function() {
   })
 
   it('should filter rooms by date', function() {
-    const filteredByType = newRoomsRepo.filterByType("single room")
-    const filterByRoom = newBookingsRepo.filterByRoom(filteredByType, '2020/02/11')
-    expect(filterByRoom.length).to.equal(5)
+    // const filteredByType = newRoomsRepo.filterByType("single room")
+    // const filterByRoom = newBookingsRepo.filterByRoom(filteredByType, '2020/02/11')
+    const filterByRoom = newBookingsRepo.filterByDate(allRooms, '2020/02/11')
+    expect(filterByRoom.length).to.equal(9)
   })
 
-  it('should return all room if no rooms are booked', function() {
-    const filteredByType = newRoomsRepo.filterByType("single room")
-    const filterByRoom = newBookingsRepo.filterByRoom(filteredByType, '2021/02/11')
-    expect(filterByRoom.length).to.equal(6)
-  })
+  // it('should return all room if no rooms are booked', function() {
+  //   const filteredByType = newRoomsRepo.filterByType("single room")
+  //   const filterByRoom = newBookingsRepo.filterByRoom(filteredByType, '2021/02/11')
+  //   expect(filterByRoom.length).to.equal(6)
+  // })
 
-  it('should return no available rooms when all rooms are booked', function() {
-    const filteredByType = newRoomsRepo.filterByType("single room")
-    const filterByRoom = newBookingsRepo.filterByRoom(filteredByType, '2021/04/26')
-    expect(filterByRoom).to.equal('no available rooms')
-  })
+  // it('should return no available rooms when all rooms are booked', function() {
+  //   const filteredByType = newRoomsRepo.filterByType("single room")
+  //   const filterByRoom = newBookingsRepo.filterByRoom(filteredByType, '2021/04/26')
+  //   expect(filterByRoom).to.equal('no available rooms')
+  // })
 
 })

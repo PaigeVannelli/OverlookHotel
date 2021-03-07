@@ -92,13 +92,28 @@ function searchBookings() {
     event.preventDefault()
     let roomType = document.getElementById('roomTypeSearch').value
     searchDate = document.getElementById('dateInput').value
-    filterSearchData(roomType, searchDate)
+    // filterSearchData(roomType, searchDate)
+    filterByDate(searchDate)
 }
 
-function filterSearchData(roomType, date) {
-    let roomsBytype = newRoomsRepo.filterByType(roomType)
-    let filteredRooms = newBookingsRepo.filterByRoom(roomsBytype, date)
-    let detailedSearchedRooms = newRoomsRepo.returnDetailedRoomData(filteredRooms)
+// function filterSearchData(roomType, date) {
+//     let roomsBytype = newRoomsRepo.filterByType(roomType)
+//     // we want to just filter by date first and then connect filter by type second 
+//     let filteredRooms = newBookingsRepo.filterByRoom(roomsBytype, date)
+//     let detailedSearchedRooms = newRoomsRepo.returnDetailedRoomData(filteredRooms)
+//     displayAvailableRooms(detailedSearchedRooms, date)
+//     showSearchData()
+// }
+
+
+
+function filterByDate(date) {
+    // let roomsBytype = newRoomsRepo.filterByType(roomType)
+    // we want to just filter by date first and then connect filter by type second 
+    // let filteredRooms = newBookingsRepo.filterByRoom(roomsBytype, date)
+    let filteredRoomsByDate = newBookingsRepo.filterByDate(date)
+    console.log(filteredRoomsByDate)
+    let detailedSearchedRooms = newRoomsRepo.returnDetailedRoomData(filteredRoomsByDate)
     displayAvailableRooms(detailedSearchedRooms, date)
     showSearchData()
 }
