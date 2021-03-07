@@ -1,7 +1,7 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 import User from './User'
-import Room from './Room'
+
 import fetchData from './get-data'
 import BookingsRepo from './BookingsRepo'
 import RoomsRepo from './RoomsRepo'
@@ -12,6 +12,9 @@ import './css/base.scss';
 import './images/turing-logo.png'
 
 let currentUser
+let newRoomsRepo
+let newBookingsRepo
+
 
 const startSearchButton = document.getElementById('startSearchButton')
 const searchBookingsButton = document.getElementById('searchBookingsButton')
@@ -25,8 +28,8 @@ function displayUserData() {
     fetchData()
     .then(allData => {
         currentUser = new User(23, allData.allUserData)
-        let newBookingsRepo = new BookingsRepo(allData.allBookings)
-        let newRoomsRepo = new RoomsRepo(allData.allRooms)
+        newBookingsRepo = new BookingsRepo(allData.allBookings)
+        newRoomsRepo = new RoomsRepo(allData.allRooms)
         // do I want to move this function into find details below?
         let userBookings = newBookingsRepo.filterByUser(currentUser.id)
         findDetailedUserData(newRoomsRepo, userBookings)
@@ -79,7 +82,39 @@ function display(element, isHidden) {
 
 function searchBookings() {
     event.preventDefault()
-    // displaySearchedCards()
     let roomType = document.getElementById('roomTypeSearch').value
     let date = document.getElementById('dateInput').value
+    filterSearchData(roomType, date)
+}
+
+function filterSearchData(roomType, date) {
+    let roomsBytype = newRoomsRepo.filterByType(roomType)
+    let filteredRooms = newBookingsRepo.filterByRoom(roomsBytype, date)
+    let detailedSearchedRooms = newRoomsRepo.returnDetailedRoomData(filteredRooms)
+    console.log(detailedSearchedRooms)
+    displayAvailableRooms(detailedSearchedRooms, date)
+    showSearchData()
+}
+
+function displayAvailableRooms(userBookings, date) {
+    const userBookingCard = document.getElementById('userBookings')
+    userBookingCard.innerHTML = ''
+    userBookings.forEach(booking => {
+        userBookingCard.insertAdjacentHTML('beforeend',
+        `<article class="room-card" id="${booking.id}">
+          <h2>Room Number ${booking.number}</h2>
+          <h2>Room Type ${booking.roomType}</h2>
+          <p>date: ${date}<p>
+          <p>bed type: ${booking.bedSize}<p>
+          <p>Number of beds: ${booking.numBeds}<p>
+          <p>Cost per night: ${booking.costPerNight}<p>
+          <button id="${booking.id}">BOOK NOW</button>
+        </article>`
+        )
+    })
+}
+
+function showSearchData() {
+    display("searchForm", true);
+    display("userBookings", false)
 }
