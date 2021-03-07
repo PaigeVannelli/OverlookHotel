@@ -13,9 +13,12 @@ import './images/turing-logo.png'
 
 let currentUser
 
-window.addEventListener('load', displayUserData);
-window.addEventListener('click', displaySearchForm);
+const startSearchButton = document.getElementById('startSearchButton')
+const searchBookingsButton = document.getElementById('searchBookingsButton')
 
+window.addEventListener('load', displayUserData);
+startSearchButton.addEventListener('click', displaySearchForm);
+searchBookingsButton.addEventListener('click', searchBookings);
 
 
 function displayUserData() {
@@ -72,4 +75,11 @@ function display(element, isHidden) {
     } else {
         document.getElementById(element).classList.remove('hidden')
     }
+}
+
+function searchBookings() {
+    event.preventDefault()
+    // displaySearchedCards()
+    let roomType = document.getElementById('roomTypeSearch').value
+    let date = document.getElementById('dateInput').value
 }
