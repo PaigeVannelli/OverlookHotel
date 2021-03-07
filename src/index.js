@@ -118,3 +118,7 @@ function showSearchData() {
     display("searchForm", true);
     display("userBookings", false)
 }
+
+function bookRoom() {
+    
+}

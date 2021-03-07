@@ -27,11 +27,9 @@ describe('See if the tests are running', function() {
     expect(currentUser.name).to.equal("Rocio Schuster")
   })
 
-  // it('should store all booking data by user id', function() {
-  //   const userBookings = newBookingsRepo.filterByUser(2)
-  //   const currentUser.userBookings = userBookings;
-  //   console.log(currentUser)
-  //   // expect(currentUser.userBookings.length).to.equal(2)
+  // it('should allow user to book a room', function() {
+  //   let bookedRoom = currentUser.bookRoom(5, "2021/03/24")
+  //   expect(bookedRoom.newBooking.userID).to.equal(currentUser.id)
   // })
 
 
