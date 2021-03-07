@@ -11,11 +11,28 @@
       <button class="search-button" id="searchButton">Search Bookings</button>
     </section>
     <main class="main-content">
-      <h2>All Bookings</h2>
-      <div clsss="card-conatiner">
-        <section class="user-bookings" id="userBookings">
-        </section>
+      <div class="all-bookings" id="userBookings">
+        <h2>All Bookings</h2>
+        <div clsss="card-conatiner">
+          <section class="user-bookings" id="userBookings">
+          </section>
+        </div>
       </div>
+      <section class="search-container hidden" id="searchForm">
+        <form class="search-form">
+            <label for="dateEntry" class="label">Dates: </label>
+            <input class="date-input" id="dateInput" type="date" placeholder="search dates" min="2021-03-02">
+            <label for="roomTypeEntry" class="label">Room Type: </label>
+            <!-- <input class="room-type-input" id="roomTypeInput"> -->
+            <select id="roomTypeSearch" name="roomType">
+              <option value="single room">Single Room</option>
+              <option value="junior suite">Junior Suite</option>
+              <option value="suite">Suite</option>
+              <option value="residential suite">Residential Suite</option>
+            </select>            
+            <button class="search-button" id="searchButton">Search Bookings</button>
+        </form>
+      </section>
       <!-- <section class="login-form-section">
         <form class="login-form">
           <ul>

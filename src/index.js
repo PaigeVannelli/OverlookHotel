@@ -13,13 +13,15 @@ import './images/turing-logo.png'
 
 let currentUser
 
-window.addEventListener('load', displayUserData)
+window.addEventListener('load', displayUserData);
+window.addEventListener('click', displaySearchForm);
+
 
 
 function displayUserData() {
     fetchData()
     .then(allData => {
-        currentUser = new User(5, allData.allUserData)
+        currentUser = new User(23, allData.allUserData)
         let newBookingsRepo = new BookingsRepo(allData.allBookings)
         let newRoomsRepo = new RoomsRepo(allData.allRooms)
         // do I want to move this function into find details below?
@@ -58,3 +60,16 @@ function displayUserInfo(currentUser, totalCost) {
     document.getElementById('totalSpent').innerHTML = `Total Spent:  ${totalCost}`
 }
 
+
+function displaySearchForm() {
+    display("searchForm", false);
+    display("userBookings", true)
+}
+
+function display(element, isHidden) {
+    if (isHidden) {
+        document.getElementById(element).classList.add('hidden')
+    } else {
+        document.getElementById(element).classList.remove('hidden')
+    }
+}
