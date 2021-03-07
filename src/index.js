@@ -6,6 +6,7 @@ import fetchData from './get-data'
 import BookingsRepo from './BookingsRepo'
 import RoomsRepo from './RoomsRepo'
 import postUserBooking from './post-data'
+import getUserData from './get-user-data'
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 
@@ -24,14 +25,49 @@ const searchBookingsButton = document.getElementById('searchBookingsButton')
 // const searchedRooms = document.getElementById('searchedRooms')
 // const roomsDisplay = document.getElementById('roomsDisplay')
 const allRooms = document.getElementById('allRooms')
+const loginButton = document.getElementById('loginButton')
 
 
-window.addEventListener('load', displayUserData);
+
+// window.addEventListener('load', displayUserData);
+// window.addEventListener('load', displayUserLogin);
 // startSearchButton.addEventListener('click', displaySearchForm);
 searchBookingsButton.addEventListener('click', searchBookings);
 allRooms.addEventListener('click', bookRoom)
+loginButton.addEventListener('click', userLogin)
+
+function userLogin() {
+    event.preventDefault()
+    const username = document.getElementById('usernameInput').value
+    let id = parseInt(username.split('r')[1])
+    const password = document.getElementById('passwordInput').value
+    if (password === "overlook2021") {
+        if (username === `customer${id}` && id >= 1 && id <= 50) {
+            console.log("login successful")
+        } else {
+            console.log("incorrect username")
+        }
+    } else {
+        console.log("incorrect password")
+    }
 
 
+
+    // if (username === 'customer' += customerID && password === 'overlook2021') {
+    //     if(customerID >= 1 && customerID <= 50) {
+    //         console.log("login")
+    //     } else {
+    //         console.log("wrong username")
+    //     }
+    // } else {
+    //     console.log("wrong password?")
+    // }
+    //if a user attempts login 
+    //on page click check user login 
+    //if username === X and password.value ==== y
+    // I want to do a get reauest for that user info 
+    // oncepromise is returned based on promise data if login true login or false disokay error 
+}
 
 function displayUserData() {
     fetchData()
