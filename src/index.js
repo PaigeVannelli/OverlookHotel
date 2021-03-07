@@ -38,41 +38,36 @@ loginButton.addEventListener('click', userLogin)
 
 function userLogin() {
     event.preventDefault()
+    display('loginError', true)
     const username = document.getElementById('usernameInput').value
     let id = parseInt(username.split('r')[1])
     const password = document.getElementById('passwordInput').value
-    if (password === "overlook2021") {
-        if (username === `customer${id}` && id >= 1 && id <= 50) {
-            console.log("login successful")
-        } else {
-            console.log("incorrect username")
-        }
-    } else {
-        console.log("incorrect password")
-    }
-
-
-
-    // if (username === 'customer' += customerID && password === 'overlook2021') {
-    //     if(customerID >= 1 && customerID <= 50) {
-    //         console.log("login")
-    //     } else {
-    //         console.log("wrong username")
-    //     }
-    // } else {
-    //     console.log("wrong password?")
-    // }
-    //if a user attempts login 
-    //on page click check user login 
-    //if username === X and password.value ==== y
-    // I want to do a get reauest for that user info 
-    // oncepromise is returned based on promise data if login true login or false disokay error 
+    validateLogin(username, password, id)
 }
 
-function displayUserData() {
+function validateLogin(username, password, id) {
+    if (password === "overlook2021") {
+        if (username === `customer${id}` && id >= 1 && id <= 50) {
+            getUserData(id)
+            .then(userData => {
+                displayUserData((userData.id))
+            })
+        } else {
+            display('loginError', false)
+            document.getElementById('loginError').innerText = 'Incorrect Username'
+        }
+    } else {
+        display('loginError', false)
+        document.getElementById('loginError').innerText = 'Incorrect Password'
+    }
+}
+
+function displayUserData(id) {
+    console.log("display")
+    hideLoginPage()
     fetchData()
     .then(allData => {
-        currentUser = new User(23, allData.allUserData)
+        currentUser = new User(id, allData.allUserData)
         newBookingsRepo = new BookingsRepo(allData.allBookings)
         newRoomsRepo = new RoomsRepo(allData.allRooms)
         // do I want to move this function into find details below?
@@ -80,6 +75,12 @@ function displayUserData() {
         currentUser.userBookings = userBookings
         findDetailedUserData(newRoomsRepo, userBookings)
     })
+}
+
+function hideLoginPage() {
+    display("loginForm", true)
+    display("sidebar", false)
+    display('roomsDisplay', false)
 }
 
 function findDetailedUserData(newRoomsRepo, userBookings) {
