@@ -21,13 +21,15 @@ let searchDate
 const startSearchButton = document.getElementById('startSearchButton')
 const searchBookingsButton = document.getElementById('searchBookingsButton')
 // const userBookingCard = document.getElementById('userBookings')
-const searchedRooms = document.getElementById('searchedRooms')
+// const searchedRooms = document.getElementById('searchedRooms')
+// const roomsDisplay = document.getElementById('roomsDisplay')
+const allRooms = document.getElementById('allRooms')
 
 
 window.addEventListener('load', displayUserData);
 startSearchButton.addEventListener('click', displaySearchForm);
 searchBookingsButton.addEventListener('click', searchBookings);
-searchedRoomsSection.addEventListener('click', bookRoom)
+allRooms.addEventListener('click', bookRoom)
 
 
 
@@ -59,8 +61,8 @@ function displayBookings(userBookings) {
 }
 
 function displayRoomCards(booking) {
-    const userBookingCard = document.getElementById('userBookings')
-        userBookingCard.insertAdjacentHTML('beforeend',
+    // const userBookingCard = document.getElementById('userBookings')
+        allRooms.insertAdjacentHTML('beforeend',
         `<article class="room-card" id="${booking.id}">
           <h2>Room Type ${booking.roomType}</h2>
           <p>date: ${booking.date}<p>
@@ -76,8 +78,9 @@ function displayUserInfo(currentUser, totalCost) {
 
 
 function displaySearchForm() {
+    document.getElementById('pageTitle').innerHTML = ''
     display("searchForm", false);
-    display("userBookings", true)
+    display("allRooms", true)
 }
 
 function display(element, isHidden) {
@@ -93,36 +96,22 @@ function searchBookings() {
     let roomType = document.getElementById('roomTypeSearch').value
     searchDate = document.getElementById('dateInput').value
     // filterSearchData(roomType, searchDate)
-    filterByDate(searchDate)
+    searchRooms(searchDate, roomType)
 }
 
-// function filterSearchData(roomType, date) {
-//     let roomsBytype = newRoomsRepo.filterByType(roomType)
-//     // we want to just filter by date first and then connect filter by type second 
-//     let filteredRooms = newBookingsRepo.filterByRoom(roomsBytype, date)
-//     let detailedSearchedRooms = newRoomsRepo.returnDetailedRoomData(filteredRooms)
-//     displayAvailableRooms(detailedSearchedRooms, date)
-//     showSearchData()
-// }
-
-
-
-function filterByDate(date) {
-    // let roomsBytype = newRoomsRepo.filterByType(roomType)
-    // we want to just filter by date first and then connect filter by type second 
-    // let filteredRooms = newBookingsRepo.filterByRoom(roomsBytype, date)
+function searchRooms(date, roomType) {
     let filteredRoomsByDate = newBookingsRepo.filterByDate(newRoomsRepo.allRooms, date)
-    
-    let detailedSearchedRooms = newRoomsRepo.returnDetailedRoomData(filteredRoomsByDate)
+    let filteredRoomsByType = newBookingsRepo.filterByType(filteredRoomsByDate, roomType)
+    let detailedSearchedRooms = newRoomsRepo.returnDetailedRoomData(filteredRoomsByType)
     displayAvailableRooms(detailedSearchedRooms, date)
     showSearchData()
 }
 
 function displayAvailableRooms(userBookings, date) {
     // const userBookingCard = document.getElementById('userBookings')
-    searchedRooms.innerHTML = ''
+    allRooms.innerHTML = ''
     userBookings.forEach(booking => {
-        searchedRooms.insertAdjacentHTML('beforeend',
+        allRooms.insertAdjacentHTML('beforeend',
         `<article class="room-card" id="${booking.id}">
           <h2>Room Number ${booking.number}</h2>
           <h2>Room Type ${booking.roomType}</h2>
@@ -137,9 +126,8 @@ function displayAvailableRooms(userBookings, date) {
 }
 
 function showSearchData() {
-    // display("searchForm", true);
-    // display("userBookings", false);
-    display("searchedRoomsSection", false)
+    document.getElementById('pageTitle').innerHTML = 'Available Rooms'
+    display("allRooms", false)
 }
 
 function bookRoom(event) {
@@ -159,8 +147,9 @@ function postBooking(roomNumber, dateReformat) {
 
     postUserBooking(userBooking)
     .then(confirmation => {
-        searchedRooms.innerHTML = ''
-        searchedRooms.insertAdjacentHTML('beforeend',
+        document.getElementById('pageTitle').innerHTML = 'Room Booked'
+        allRooms.innerHTML = ''
+        allRooms.insertAdjacentHTML('beforeend',
             `<article class="room-card booking-confirmation" id="${confirmation.newBooking.id}">
             <p>Congratulations! Your booking was successful. See confirmation details below:</p>
             <h2>Room Number: ${confirmation.newBooking.roomNumber}</h2>
