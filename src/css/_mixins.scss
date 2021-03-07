@@ -8,9 +8,17 @@
 @mixin all-cards {
     border-radius: 5%;
     opacity: 90%;
-    height: 15em;
+    height: 25em;
     width: 30%;
-    margin: 5px;
-    background-color: $highlight-one;
+    margin: 10px;
+    background-color: $card-background-color;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+@mixin titles {
+    font-size: 2em;
+    font-weight: 800;
 }

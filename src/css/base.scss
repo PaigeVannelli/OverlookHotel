@@ -2,12 +2,14 @@
 @import '_mixins';
 @import '_variables';
 @import '_reset';
+// @import url('https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700&subset=latin-ext,cyrillic')
 /* This is an example of using Sass, otherwise plain CSS works too*/
 // $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 ;
 
 * {
   margin: none;
+  font-family: $primary-font
 }
 
 body {
@@ -17,26 +19,64 @@ body {
   height: 100%;
   margin: 0px;
   padding: 0px;
+  background-image: url("https://images.unsplash.com/photo-1582719508461-905c673771fd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzb3J0fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  // height: 100vh;
 }
 
 //~~~~~~~~~~~~~~ Sidebar Styling ~~~~~~~~~~~//
 
 .sidebar {
   background-color: $main-color;
+  opacity: 80%;
+  font-family: $primary-font;
   height: 100em;
-  width: 25%;
+  width: 20%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  position: fixed;
+  left: 3%;
 }
 
+.overlook-o {
+  font-size: 3em;
+}
+
+.overlook {
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 2em;
+  font-weight: 800;
+}
+
+.welcome-text {
+  margin: 15px;
+}
+
+.sidebar-details {
+  margin: 15px;
+}
+
+.overlook-text{
+  @include titles;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
 
 //~~~~~~~~~~~~~~~ Main Section Styling ~~~~~~~//
 
 .main-content {
-  background-color: $background-color;
+  // background-color: $background-color;
   width: 75%;
   display: flex;
   flex-direction: column;
+  margin-left: 23%;
 }
 
 .user-bookings {
@@ -45,6 +85,18 @@ body {
   flex-flow: wrap;
   align-items: center;
   justify-content: center;
+}
+
+.page-title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-title {
+  @include titles;
+  height: 2em;
+  padding-top: 1.5em;
 }
 
 //~~~~~~~~~~~~~~~ Card Styling ~~~~~~~~~~~~~//
@@ -57,6 +109,14 @@ body {
   // margin: 5px;
   // align-self: center;
   // justify-self: center;
+}
+
+.card-text {
+  margin: 15px;
+}
+
+.room-number {
+  font-size: 3em;
 }
 
 

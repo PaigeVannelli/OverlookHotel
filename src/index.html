@@ -5,9 +5,14 @@
   </head>
   <body>
     <section class="sidebar"> 
-      <h2 class="welcome-text" id="welcomeText">Welcome User!</h2>
-      <p class="user-details" id="userDetails">USER PROFILE</p>
-      <p class="total-spent" id="totalSpent">Total Spent: </p>
+      <div class="overlook-text sidebar-details">
+        <h1 class="overlook-o">O</h1>
+        <h1 class="overlook">verlook Hotel</h1>
+      </div>
+      <h2 class="welcome-text title">Welcome</h2>
+      <h2 class="welcome-text title" id="welcomeText">name</h2>
+      <p class="user-details sidebar-details" id="userDetails">USER PROFILE</p>
+      <p class="total-spent sidebar-details" id="totalSpent">Total Spent: </p>
       <button class="search-button" id="startSearchButton">Search Bookings</button>
     </section>
     <main class="main-content">
@@ -28,7 +33,9 @@
         </form>
       </section>
       <div class="all-bookings" id="roomsDisplay">
-        <h2 id="pageTitle">All Bookings</h2>
+        <div class="page-title-container">
+          <h2 class="page-title" id="pageTitle">Previous Reservations</h2>
+        </div>
         <div class="card-container">
           <section class="user-bookings" id="allRooms">
           </section>
