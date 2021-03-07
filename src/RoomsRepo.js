@@ -25,6 +25,13 @@ class RoomsRepo {
         })
         return totalCost
     }
+
+    filterByType(type) {
+        const filteredRooms = this.allRooms.filter(room => {
+            return room.roomType === type
+        })
+        return filteredRooms;
+    }
 }
 
 export default RoomsRepo
