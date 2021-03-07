@@ -1,5 +1,5 @@
 
-import postUserBooking from './post-data'
+// import postUserBooking from './post-data'
 class User {
     constructor(userID, customers) {
         // shoud have a user id name and all their bookings 
@@ -17,14 +17,19 @@ class User {
         return currentCustomer.name
     }
 
-    bookRoom(roomNumber, date) {
-        let userBooking = {
-            "userID": this.id,
-            "date": date, 
-            "roomNumber": roomNumber
-        }
-        postUserBooking(userBooking)
-    }
+    // bookRoom(roomNumber, date) {
+    //     let userBooking = {
+    //         "userID": this.id,
+    //         "date": date, 
+    //         "roomNumber": roomNumber
+    //     }
+    //     return postUserBooking(userBooking)
+    //     .then(response => {
+    //         return(response)
+    //     })
+    //     // bookRoom is not asynchronous and is not returning anything
+    //     // postUserBooking returns response but then nothing happens with it
+    // }
 }
 
 export default User
