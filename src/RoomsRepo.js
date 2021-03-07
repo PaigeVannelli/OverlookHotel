@@ -27,10 +27,10 @@ class RoomsRepo {
     }
 
     filterByType(type) {
-        const correctRooms = this.allRooms.filter(room => {
+        const filteredRooms = this.allRooms.filter(room => {
             return room.roomType === type
         })
-        return correctRooms;
+        return filteredRooms;
     }
 }
 

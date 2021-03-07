@@ -14,7 +14,24 @@ class BookingsRepo {
         }
     }
 
-    // should filter by date 
+    filterByDate(date) { 
+        return this.allBookings.filter(booking => {
+            return booking.date === date
+        })
+    }
+
+    filterByRoom(roomsByType, date) {
+        let filteredRooms = roomsByType.filter(room => {
+            return !this.filterByDate(date).some(booking => {
+                return booking.roomNumber === room.number
+            })
+        })
+        if (filteredRooms.length > 0) {
+            return filteredRooms
+        } else {
+            return 'no available rooms'
+        }
+    }
 }
 
 export default BookingsRepo
