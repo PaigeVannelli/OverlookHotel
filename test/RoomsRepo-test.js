@@ -38,7 +38,7 @@ describe('Test RoomRepo Functionality', function() {
 
   it('should calcuate and return total cost', function() {
       let totalCost = newRoomsRepo.returnTotalCost(userBookings)
-      expect(totalCost).to.equal(575.06)
+      expect(totalCost).to.equal('575.06')
   })
 
   it('should be able to filter rooms by date and type', function() {
