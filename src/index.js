@@ -227,7 +227,6 @@ function displayAvailableRooms(userBookings, date) {
           </article>`
           )
         })
-        // <h2 class="title card-text room-number">#${booking.number}</h2>
 }
 
 function showSearchData() {
@@ -253,20 +252,32 @@ function postBooking(roomNumber, dateReformat) {
     }
     postUserBooking(userBooking)
     .then(confirmation => {
-        document.getElementById('pageTitle').innerHTML = 'Room Booked'
-        allRooms.innerHTML = ''
-        allRooms.insertAdjacentHTML('beforeend',
-            `<article class="room-card booking-confirmation" id="${confirmation.newBooking.id}">
-            <p class="title card-text">Congratulations! Your booking was successful. See confirmation details below:</p>
-            <h2 class="card-text">Room Number: ${confirmation.newBooking.roomNumber}</h2>
-            <h2 class="card-text">Confirmation Number: ${confirmation.newBooking.id}</h2>
-            <p class="card-text">date: ${searchDate}<p>
-            </article>`
-        )
+        let userBookingArray = []
+        userBookingArray.push(userBooking)
+        let detailedConfirmation = newRoomsRepo.returnDetailedRoomData(userBookingArray)
+        checkRoomType(detailedConfirmation)
+        displayConfirmation(confirmation, detailedConfirmation[0])
         currentUser.userBookings.push(confirmation.newBooking)
     })
 }
 
+function displayConfirmation(confirmation, detailedConfirmation) {
+    document.getElementById('pageTitle').innerHTML = 'Room Booked'
+    allRooms.innerHTML = ''
+    allRooms.insertAdjacentHTML('beforeend',
+        `<article class="room-card booking-confirmation" id="${confirmation.newBooking.id}">
+        <img class="room-image" src="${detailedConfirmation.roomImage}">
+        <div class="card-text-container">
+            <p class="title card-text">Congratulations! Your booking was successful. See confirmation details below:</p>
+            <h2 class="card-text">Confirmation Number: ${confirmation.newBooking.id}</h2>
+            <h2 class="card-text">#${confirmation.newBooking.roomNumber} ${detailedConfirmation.roomType}</h2>
+            <p class="card-text">${searchDate}<p>
+            <p class="card-text">${detailedConfirmation.numBeds} ${detailedConfirmation.bedSize}<p>
+            <p class="card-text">$${detailedConfirmation.costPerNight} total<p>
+          </div>
+        </article>`
+    )
+}
 function displayUserPage() {
     document.getElementById('pageTitle').innerHTML = 'Upcoming Reservations'
     display("previousBookings", false)
