@@ -1,11 +1,11 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 import User from './User'
-
 import fetchData from './get-data'
 import BookingsRepo from './BookingsRepo'
 import RoomsRepo from './RoomsRepo'
 import postUserBooking from './post-data'
+import getUserData from './get-user-data'
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 
@@ -17,26 +17,46 @@ let newRoomsRepo
 let newBookingsRepo
 let searchDate
 
-
-// const startSearchButton = document.getElementById('startSearchButton')
 const searchBookingsButton = document.getElementById('searchBookingsButton')
-// const userBookingCard = document.getElementById('userBookings')
-// const searchedRooms = document.getElementById('searchedRooms')
-// const roomsDisplay = document.getElementById('roomsDisplay')
 const allRooms = document.getElementById('allRooms')
+const loginButton = document.getElementById('loginButton')
 
-
-window.addEventListener('load', displayUserData);
-// startSearchButton.addEventListener('click', displaySearchForm);
 searchBookingsButton.addEventListener('click', searchBookings);
 allRooms.addEventListener('click', bookRoom)
+loginButton.addEventListener('click', userLogin)
 
+function userLogin() {
+    event.preventDefault()
+    display('loginError', true)
+    const username = document.getElementById('usernameInput').value
+    let id = parseInt(username.split('r')[1])
+    const password = document.getElementById('passwordInput').value
+    validateLogin(username, password, id)
+}
 
+function validateLogin(username, password, id) {
+    if (username === `customer${id}` && id >= 1 && id <= 50) {
+        if (password === "overlook2021") {
+            getUserData(id)
+            .then(userData => {
+                displayUserData((userData.id))
+            })
+        } else {
+            display('loginError', false)
+            document.getElementById('loginError').innerText = 'Incorrect Password'
+        }
+    } else {
+        display('loginError', false)
+        document.getElementById('loginError').innerText = 'Incorrect Username'
+    }
+}
 
-function displayUserData() {
+function displayUserData(id) {
+    console.log("display")
+    hideLoginPage()
     fetchData()
     .then(allData => {
-        currentUser = new User(23, allData.allUserData)
+        currentUser = new User(id, allData.allUserData)
         newBookingsRepo = new BookingsRepo(allData.allBookings)
         newRoomsRepo = new RoomsRepo(allData.allRooms)
         // do I want to move this function into find details below?
@@ -44,6 +64,13 @@ function displayUserData() {
         currentUser.userBookings = userBookings
         findDetailedUserData(newRoomsRepo, userBookings)
     })
+}
+
+function hideLoginPage() {
+    display('loginForm', true)
+    display('searchForm', false)
+    display('userDetails', false)
+    display('roomsDisplay', false)
 }
 
 function findDetailedUserData(newRoomsRepo, userBookings) {

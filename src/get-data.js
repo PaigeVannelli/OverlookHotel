@@ -23,13 +23,6 @@ const fetchData = () => {
         })
         .catch(err => displayError(err))
 
-    // let sleepData = fetch("http://localhost:3001/api/v1/sleep")
-    //     .then(response => response.json())
-    //     .then(sleepData => {
-    //         return sleepData;
-    //     })
-    //     .catch(err => displayError(err));
-
         return Promise.all([allUserData, allRooms, allBookings])
         .then(data => {
           let allData = {}
