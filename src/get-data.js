@@ -33,4 +33,11 @@ const fetchData = () => {
         });
 }
 
+export const displayError = (errorMessage) => {
+    const errorDisplay =  document.getElementById('errorDisplay');
+    const message = errorMessage.message === 'Failed to fetch' ?
+      "Internet connection may be unstable. Check again in a moment please." : errorMessage
+      errorDisplay.innerText = message;
+}
+
 export default fetchData

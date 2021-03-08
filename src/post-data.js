@@ -1,3 +1,5 @@
+import displayError from './get-data'
+
 function postUserBooking(userBooking) {
     return fetch("http://localhost:3001/api/v1/bookings", {
         method: "POST",
@@ -11,7 +13,6 @@ function postUserBooking(userBooking) {
     .then(finalData => {
         return finalData})
     .catch(err => displayError(err))
-
 }
 
 export default postUserBooking
