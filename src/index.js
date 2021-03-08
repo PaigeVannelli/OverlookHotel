@@ -123,14 +123,17 @@ function checkRoomType(userBookings) {
     userBookings.forEach(booking => {
         if (booking.roomType === 'single room') {
             booking.roomImage = './images/single.jpg'
+            booking.imageAlt = 'image of a single room overlooking pool'
         } else if (booking.roomType === 'junior suite') {
             booking.roomImage = './images/juniorSuite.jpg'
+            booking.imageAlt = 'image of a junior suite overlooking ocean'
         } else if (booking.roomType === 'suite') {
             booking.roomImage = './images/suite.jpg'
+            booking.imageAlt = 'image of a regualr suite overlooking ocean'
         } else if (booking.roomType === 'residential suite') {
             booking.roomImage = './images/residentialSuite.jpg'
+            booking.imageAlt = 'image of a residential suite with sitting room'
         }
-        console.log(booking)
     })
 }
 
@@ -139,7 +142,7 @@ function displayUpcoming(upcoming) {
     upcoming.forEach(booking => {
         allRooms.insertAdjacentHTML('beforeend',
             `<article class="room-card" id="${booking.id}">
-            <img class="room-image" src="${booking.roomImage}">
+            <img class="room-image" src="${booking.roomImage}" alt="${booking.imageAlt}">
             <div class="card-text-container">
                 <h2 class="title card-text">#${booking.roomNumber} ${booking.roomType}</h2>
                 <p class="card-text">date: ${booking.date}<p>
@@ -156,7 +159,7 @@ function displayPreviousBookings(previous) {
     previous.forEach(booking => {
         previousBookings.insertAdjacentHTML('beforeend',
                 `<article class="room-card" id="${booking.id}">
-                <img class="room-image" src="${booking.roomImage}">
+                <img class="room-image" src="${booking.roomImage}" alt="${booking.imageAlt}">
                 <div class="card-text-container">
                     <h2 class="title card-text">#${booking.roomNumber} ${booking.roomType}</h2>
                     <p class="card-text">date: ${booking.date}<p>
@@ -169,7 +172,7 @@ function displayPreviousBookings(previous) {
 }
 
 function displayUserInfo(currentUser, totalCost) {
-    document.getElementById('welcomeText').innerHTML = `${currentUser.name}`
+    document.getElementById('userProfileButton').innerHTML = `${currentUser.name}`
     document.getElementById('totalSpent').innerHTML = `Total Spent:  $${totalCost}`
 }
 
@@ -216,7 +219,7 @@ function displayAvailableRooms(userBookings, date) {
     userBookings.forEach(booking => {
         allRooms.insertAdjacentHTML('beforeend',
         `<article class="room-card" id="${booking.id}">
-          <img class="room-image" src="${booking.roomImage}">
+          <img class="room-image" src="${booking.roomImage}" alt="${booking.imageAlt}">
           <div class="card-text-container">
           <h2 class="title card-text">#${booking.number} ${booking.roomType}</h2>
           <p class="card-text">${date}<p>
@@ -266,7 +269,7 @@ function displayConfirmation(confirmation, detailedConfirmation) {
     allRooms.innerHTML = ''
     allRooms.insertAdjacentHTML('beforeend',
         `<article class="room-card booking-confirmation" id="${confirmation.newBooking.id}">
-        <img class="room-image" src="${detailedConfirmation.roomImage}">
+        <img class="room-image" src="${detailedConfirmation.roomImage}" alt="${booking.imageAlt}">
         <div class="card-text-container">
             <p class="title card-text">Congratulations! Your booking was successful. See confirmation details below:</p>
             <h2 class="card-text">Confirmation Number: ${confirmation.newBooking.id}</h2>
