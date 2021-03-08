@@ -24,6 +24,7 @@
           <div class="form-element">
             <label for="dateInput" class="date-label label">Dates: </label>
             <input class="input" id="dateInput" type="date" placeholder="search dates" min="2021-03-02">
+            <p class="date-error hidden" id="dateError">Please specify a date</p>
           </div>
           <div class="form-element">
             <label for="roomTypeSearch" class="type-label label">Room: </label>
@@ -40,6 +41,8 @@
       </section>
     </section>
     <main class="main-content">
+      <p class="500-error" id="errorDisplay"></p>
+      <p class="400-error" id="errorDisplay400"></p>
       <div class="all-bookings hidden" id="roomsDisplay">
         <div class="page-title-container">
           <h2 class="page-title" id="pageTitle">Previous Reservations</h2>
