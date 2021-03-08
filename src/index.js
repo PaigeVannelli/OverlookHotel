@@ -1,7 +1,6 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 import User from './User'
-
 import fetchData from './get-data'
 import BookingsRepo from './BookingsRepo'
 import RoomsRepo from './RoomsRepo'
@@ -18,20 +17,10 @@ let newRoomsRepo
 let newBookingsRepo
 let searchDate
 
-
-// const startSearchButton = document.getElementById('startSearchButton')
 const searchBookingsButton = document.getElementById('searchBookingsButton')
-// const userBookingCard = document.getElementById('userBookings')
-// const searchedRooms = document.getElementById('searchedRooms')
-// const roomsDisplay = document.getElementById('roomsDisplay')
 const allRooms = document.getElementById('allRooms')
 const loginButton = document.getElementById('loginButton')
 
-
-
-// window.addEventListener('load', displayUserData);
-// window.addEventListener('load', displayUserLogin);
-// startSearchButton.addEventListener('click', displaySearchForm);
 searchBookingsButton.addEventListener('click', searchBookings);
 allRooms.addEventListener('click', bookRoom)
 loginButton.addEventListener('click', userLogin)
@@ -46,19 +35,19 @@ function userLogin() {
 }
 
 function validateLogin(username, password, id) {
-    if (password === "overlook2021") {
-        if (username === `customer${id}` && id >= 1 && id <= 50) {
+    if (username === `customer${id}` && id >= 1 && id <= 50) {
+        if (password === "overlook2021") {
             getUserData(id)
             .then(userData => {
                 displayUserData((userData.id))
             })
         } else {
             display('loginError', false)
-            document.getElementById('loginError').innerText = 'Incorrect Username'
+            document.getElementById('loginError').innerText = 'Incorrect Password'
         }
     } else {
         display('loginError', false)
-        document.getElementById('loginError').innerText = 'Incorrect Password'
+        document.getElementById('loginError').innerText = 'Incorrect Username'
     }
 }
 
@@ -78,8 +67,9 @@ function displayUserData(id) {
 }
 
 function hideLoginPage() {
-    display("loginForm", true)
-    display("sidebar", false)
+    display('loginForm', true)
+    display('searchForm', false)
+    display('userDetails', false)
     display('roomsDisplay', false)
 }
 
