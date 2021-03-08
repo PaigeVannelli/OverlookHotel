@@ -23,11 +23,13 @@ const searchBookingsButton = document.getElementById('searchBookingsButton')
 const allRooms = document.getElementById('allRooms')
 const previousBookings = document.getElementById('previousBookings')
 const loginButton = document.getElementById('loginButton')
+const userProfileButton = document.getElementById('userProfileButton')
 
 window.addEventListener('load', getToday)
 searchBookingsButton.addEventListener('click', searchBookings);
 allRooms.addEventListener('click', bookRoom)
 loginButton.addEventListener('click', userLogin)
+userProfileButton.addEventListener('click', displayUserPage)
 
 function getToday() {
     let unformattedToday = new Date
@@ -65,11 +67,6 @@ function validateLogin(username, password, id) {
     }
 }
 
-
-
-
-
-
 displayUserData(14)
 
 function displayUserData(id) {
@@ -104,47 +101,38 @@ function findDetailedUserData(newRoomsRepo, userBookings) {
 
 function displayBookings(userBookings) {
     let roomImage
-    allRooms.innerHTML = ''
+    let upcoming = []
+    let previous = []
     userBookings.forEach(booking => {
-        if (booking.roomType === 'single room') {
-            roomImage = ''
-        } else if (booking.roomType === 'junior suite') {
-
-        } else if (booking.roomType === 'suite') {
-
-        } else if (booking.roomType === 'residential suite') {
-
+        if (booking.date >= today) {
+            upcoming.push(booking)
+        } else {
+            previous.push(booking)
         }
-        // displayRoomCards(booking, roomImage)
-        checkBookings(booking, roomImage)
-    })
-}
-
-function checkBookings(booking, roomImage) {
-    if (booking.date >= today) {
-        console.log("future booking")
         display('noUpcomingReservations', true)
-        displayRoomCards(booking, roomImage, allRooms)
-    } else {
-        console.log("past booking")
-        displayRoomCards(booking, roomImage, previousBookings)
-    }
+        displayUpcoming(upcoming, roomImage)
+        displayPreviousBookings(previous, roomImage)
+    })
+    // allRooms.innerHTML = ''
+    // userBookings.forEach(booking => {
+    //     if (booking.roomType === 'single room') {
+    //         roomImage = ''
+    //     } else if (booking.roomType === 'junior suite') {
+
+    //     } else if (booking.roomType === 'suite') {
+
+    //     } else if (booking.roomType === 'residential suite') {
+
+    //     }
+    //     // displayRoomCards(booking, roomImage)
+    //     checkBookings(booking, roomImage)
+    // })
 }
 
-// function displayRoomCards(booking, roomImage) {
-//     // const userBookingCard = document.getElementById('userBookings')
-//         allRooms.insertAdjacentHTML('beforeend',
-//         `<article class="room-card" id="${booking.id}">
-//         <h2 class="title card-text">${booking.roomType}</h2>
-//         <p class="card-text">date: ${booking.date}<p>
-//         <p class="card-text">$${booking.costPerNight} total<p>
-//         </article>`
-//     )
-//         // <img class="roomImage" src="./images/turing-logo.png">
-// }
-function displayRoomCards(booking, roomImage, element) {
+function displayUpcoming(upcoming, roomImage) {
+    allRooms.innerHTML = ''
     // const displaySection = document.getElementById(`${element}`)
-    if (element === allRooms) {
+    upcoming.forEach(booking => {
         allRooms.insertAdjacentHTML('beforeend',
             `<article class="room-card" id="${booking.id}">
             <h2 class="title card-text">${booking.roomType}</h2>
@@ -152,16 +140,21 @@ function displayRoomCards(booking, roomImage, element) {
             <p class="card-text">$${booking.costPerNight} total<p>
             </article>`
         )
-    } else {
-        previousBookings.insertAdjacentHTML('beforeend',
-            `<article class="room-card" id="${booking.id}">
-            <h2 class="title card-text">${booking.roomType}</h2>
-            <p class="card-text">date: ${booking.date}<p>
-            <p class="card-text">$${booking.costPerNight} total<p>
-            </article>`
-        )
-    }
+    })
         // <img class="roomImage" src="./images/turing-logo.png">
+}
+
+function displayPreviousBookings(previous, roomImage) {
+    previousBookings.innerHTML = ''
+    previous.forEach(booking => {
+        previousBookings.insertAdjacentHTML('beforeend',
+                `<article class="room-card" id="${booking.id}">
+                <h2 class="title card-text">${booking.roomType}</h2>
+                <p class="card-text">date: ${booking.date}<p>
+                <p class="card-text">$${booking.costPerNight} total<p>
+                </article>`
+            )
+    })
 }
 
 function displayUserInfo(currentUser, totalCost) {
@@ -169,12 +162,6 @@ function displayUserInfo(currentUser, totalCost) {
     document.getElementById('totalSpent').innerHTML = `Total Spent:  $${totalCost}`
 }
 
-
-// function displaySearchForm() {
-//     document.getElementById('pageTitle').innerHTML = ''
-//     display("searchForm", false);
-//     display("allRooms", true)
-// }
 
 function display(element, isHidden) {
     if (isHidden) {
@@ -215,7 +202,6 @@ function displayRooms(filteredRoomsByType, date) {
 function displayAvailableRooms(userBookings, date) {
     allRooms.innerHTML = ''
     userBookings.forEach(booking => {
-        console.log(booking)
         allRooms.insertAdjacentHTML('beforeend',
         `<article class="room-card" id="${booking.id}">
           <h2 class="title card-text room-number">#${booking.number}</h2>
@@ -264,4 +250,11 @@ function postBooking(roomNumber, dateReformat) {
         )
         currentUser.userBookings.push(confirmation.newBooking)
     })
+}
+
+function displayUserPage() {
+    document.getElementById('pageTitle').innerHTML = 'Upcoming Reservations'
+    display("previousBookings", false)
+    display('previousBookingsTitle', false)
+    displayUserData(currentUser.id)
 }
