@@ -103,6 +103,7 @@ function findDetailedUserData(newRoomsRepo, userBookings) {
 
 
 function displayBookings(userBookings) {
+    let roomImage
     allRooms.innerHTML = ''
     userBookings.forEach(booking => {
         if (booking.roomType === 'single room') {
@@ -114,7 +115,7 @@ function displayBookings(userBookings) {
         } else if (booking.roomType === 'residential suite') {
 
         }
-        displayRoomCards(booking, roomImage)
+        // displayRoomCards(booking, roomImage)
         checkBookings(booking, roomImage)
     })
 }
@@ -231,6 +232,8 @@ function displayAvailableRooms(userBookings, date) {
 function showSearchData() {
     document.getElementById('pageTitle').innerHTML = 'Available Rooms'
     display("allRooms", false)
+    display("previousBookings", true)
+    display('previousBookingsTitle', true)
 }
 
 function bookRoom(event) {
