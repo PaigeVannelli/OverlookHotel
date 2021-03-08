@@ -129,7 +129,6 @@ function searchBookings() {
     event.preventDefault()
     let roomType = document.getElementById('roomTypeSearch').value
     searchDate = document.getElementById('dateInput').value
-    // filterSearchData(roomType, searchDate)
     searchRooms(searchDate, roomType)
 }
 
@@ -137,8 +136,9 @@ function searchRooms(date, roomType) {
     let filteredRoomsByDate = newBookingsRepo.filterByDate(newRoomsRepo.allRooms, date)
     let filteredRoomsByType = newBookingsRepo.filterByType(filteredRoomsByDate, roomType)
     if (!date) {
-        console.log("specify date")
+        display('searchError', false)
     } else {
+        display('searchError', true)
         displayRooms(filteredRoomsByType, date)
     }
 }

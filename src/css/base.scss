@@ -126,16 +126,18 @@ body {
 //~~~~~~~~~~~ Search Form Styling ~~~~~~~~~~~~~//
 
 .search-form {
-  height: 20em;
+  height: 12em;
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: center;
   margin-top: 50px;
+  width: 100%;
 }
 
 .search-container {
-  height: 20em;
+  height: 12em;
+  width: 100%;
 }
 
 .form-element {
@@ -203,6 +205,27 @@ body {
 .login-form-button {
   @include all-buttons-inputs
 }
+
+//~~~~~~~~~~~~~~ Media Queries ~~~~~~~~~~//
+
+// @media screen and (max-width: 768px) {
+
+// }
+@media screen and (max-width: 800px) {
+  .sidebar {
+    background-color: yellow;
+  }
+
+  .search-container {
+  }
+}
+
+@media screen and (max-width: 425px) {
+
+}
+
+
+//~~~~~~~~~~~~~~~ Other ~~~~~~~~~~~~~~~~//
 
 #blockColorblindContent {
   display: none;
