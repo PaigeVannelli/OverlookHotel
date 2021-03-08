@@ -1,8 +1,9 @@
 @import '_variables';
 
-@mixin all-buttons {
+@mixin all-buttons-inputs {
     border-radius: 5%;
-    background-color: $highlight-one;
+    background-color: $card-background-color;
+    border: none;
 }
 
 @mixin all-cards {
