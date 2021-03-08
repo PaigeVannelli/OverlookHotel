@@ -131,7 +131,6 @@ function checkRoomType(userBookings) {
             booking.roomImage = './images/residentialSuite.jpg'
         }
         console.log(booking)
-        // checkBookings(booking, roomImage)
     })
 }
 
@@ -141,9 +140,12 @@ function displayUpcoming(upcoming) {
         allRooms.insertAdjacentHTML('beforeend',
             `<article class="room-card" id="${booking.id}">
             <img class="room-image" src="${booking.roomImage}">
-            <h2 class="title card-text">${booking.roomType}</h2>
-            <p class="card-text">date: ${booking.date}<p>
-            <p class="card-text">$${booking.costPerNight} total<p>
+            <div class="card-text-container">
+                <h2 class="title card-text">#${booking.roomNumber} ${booking.roomType}</h2>
+                <p class="card-text">date: ${booking.date}<p>
+                <p class="card-text">${booking.numBeds} ${booking.bedSize}<p>
+                <p class="card-text">$${booking.costPerNight} total<p>
+            </div>
             </article>`
         )
     })
@@ -155,9 +157,12 @@ function displayPreviousBookings(previous) {
         previousBookings.insertAdjacentHTML('beforeend',
                 `<article class="room-card" id="${booking.id}">
                 <img class="room-image" src="${booking.roomImage}">
-                <h2 class="title card-text">${booking.roomType}</h2>
-                <p class="card-text">date: ${booking.date}<p>
-                <p class="card-text">$${booking.costPerNight} total<p>
+                <div class="card-text-container">
+                    <h2 class="title card-text">#${booking.roomNumber} ${booking.roomType}</h2>
+                    <p class="card-text">date: ${booking.date}<p>
+                    <p class="card-text">${booking.numBeds} ${booking.bedSize}<p>
+                    <p class="card-text">$${booking.costPerNight} total<p>
+                </div>
                 </article>`
             )
     })
@@ -206,19 +211,23 @@ function displayRooms(filteredRoomsByType, date) {
 }
 
 function displayAvailableRooms(userBookings, date) {
+    checkRoomType(userBookings)
     allRooms.innerHTML = ''
     userBookings.forEach(booking => {
         allRooms.insertAdjacentHTML('beforeend',
         `<article class="room-card" id="${booking.id}">
-          <h2 class="title card-text room-number">#${booking.number}</h2>
-          <h2 class="title card-text">${booking.roomType}</h2>
+          <img class="room-image" src="${booking.roomImage}">
+          <div class="card-text-container">
+          <h2 class="title card-text">#${booking.number} ${booking.roomType}</h2>
           <p class="card-text">${date}<p>
           <p class="card-text">${booking.numBeds} ${booking.bedSize}<p>
           <p class="card-text">$${booking.costPerNight} total<p>
           <button id="bookNowButton+${booking.number}">BOOK NOW</button>
-        </article>`
-        )
-    })
+          </div>
+          </article>`
+          )
+        })
+        // <h2 class="title card-text room-number">#${booking.number}</h2>
 }
 
 function showSearchData() {
