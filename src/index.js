@@ -89,6 +89,7 @@ function findDetailedUserData(newRoomsRepo, userBookings) {
 
 
 function displayBookings(userBookings) {
+    allRooms.innerHTML = ''
     userBookings.forEach(booking => {
         displayRoomCards(booking)
     })
@@ -137,8 +138,9 @@ function searchRooms(date, roomType) {
     let filteredRoomsByDate = newBookingsRepo.filterByDate(newRoomsRepo.allRooms, date)
     let filteredRoomsByType = newBookingsRepo.filterByType(filteredRoomsByDate, roomType)
     if (!date) {
-        console.log("specify date")
+        display('dateError', false)
     } else {
+        display('dateError', true)
         displayRooms(filteredRoomsByType, date)
     }
 }
@@ -154,7 +156,6 @@ function displayRooms(filteredRoomsByType, date) {
 }
 
 function displayAvailableRooms(userBookings, date) {
-    // const userBookingCard = document.getElementById('userBookings')
     allRooms.innerHTML = ''
     userBookings.forEach(booking => {
         allRooms.insertAdjacentHTML('beforeend',
