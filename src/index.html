@@ -5,22 +5,26 @@
   </head>
   <body>
     <section class="sidebar" id="sidebar"> 
-      <div class="overlook-text sidebar-details">
-        <h1 class="overlook-o">O</h1>
-        <h1 class="overlook">verlook Hotel</h1>
+      <div class="sidebar-main-details">
+        <div class="overlook-text sidebar-details">
+          <h1 class="overlook-o">O</h1>
+          <h1 class="overlook">verlook Hotel</h1>
+        </div>
+        <section class="user-details hidden" id="userDetails">
+          <!-- add hidden above -->
+          <div class='welcome-message'>
+            <h2 class="welcome-text title">Welcome</h2>
+            <h2 class="welcome-text title" id="welcomeText">name</h2>
+          </div>
+          <!-- <p class="user-details sidebar-details" id="userDetails">USER PROFILE</p> -->
+          <p class="total-spent sidebar-details" id="totalSpent">Total Spent: </p>
+          <!-- <button class="user-button sidebar-details" id="userProfile">USER PROFILE</button> -->
+        </section>
       </div>
-      <section class="user-details hidden" id="userDetails">
-        <!-- add hidden above -->
-        <h2 class="welcome-text title">Welcome</h2>
-        <h2 class="welcome-text title" id="welcomeText">name</h2>
-        <!-- <p class="user-details sidebar-details" id="userDetails">USER PROFILE</p> -->
-        <button class="user-button sidebar-details" id="userProfile">USER PROFILE</button>
-        <p class="total-spent sidebar-details" id="totalSpent">Total Spent: </p>
-      </section>
       <section class="search-container hidden" id="searchForm">
         <!-- add hidden above -->
         <form class="search-form">
-          <h2 class="title">Book Now</h2>
+          <h2 class="title book-now">Book Now</h2>
           <div class="form-element">
             <label for="dateInput" class="date-label label">Dates: </label>
             <input class="input" id="dateInput" type="date" placeholder="search dates" min="2021-03-02">
@@ -36,7 +40,9 @@
               <option value="residential suite">Residential Suite</option>
             </select>            
           </div>
-          <button class="search-button" id="searchBookingsButton">Search Bookings</button>
+          <div class="search-button-container">
+            <button class="search-button" id="searchBookingsButton">Search</button>
+          </div>
         </form>
       </section>
     </section>

@@ -41,6 +41,11 @@ body {
   left: 3%;
 }
 
+// .sidebar-details {
+//   // position: fixed;
+//   width: 100%;
+// }
+
 .overlook-o {
   font-size: 3em;
 }
@@ -50,7 +55,7 @@ body {
 }
 
 .title {
-  font-size: 2em;
+  font-size: 1.7em;
   font-weight: 800;
   margin: 25px 25px 25px 10px;
 }
@@ -61,7 +66,7 @@ body {
 
 .sidebar-details {
   margin: 35px 15px 15px 15px;
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 .user-button {
@@ -82,7 +87,7 @@ body {
   width: 75%;
   display: flex;
   flex-direction: column;
-  margin-left: 23%;
+  margin: 0 0 0 23%;
 }
 
 .user-bookings {
@@ -90,7 +95,8 @@ body {
   flex-direction: row;
   flex-flow: wrap;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
+  justify-content: space-evenly;
 }
 
 .page-title-container {
@@ -144,9 +150,16 @@ body {
   margin: 15px;
 }
 
+.search-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .search-button {
   @include all-buttons-inputs;
-  width: 18em;
+  width: 60%;
+  min-width: 8em;
   height: 1.8em;
   margin-top: 15px;
 }
@@ -211,17 +224,110 @@ body {
 // @media screen and (max-width: 768px) {
 
 // }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
   .sidebar {
-    background-color: yellow;
+    width: 100%;
+    height: 15%;
+    // background-color: yellow;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+  }
+
+  .main-content {
+    margin-left: 15%;
+  }
+  
+  .sidebar-main-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    width: 100%;
+  }
+
+  .sidebar-details {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 0;
+  }
+
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .total-spent {
+    margin-top: 5px 0 0 0;
+  }
+
+  .overlook-text {
+    width: 20%;
+  }
+
+  .search-form {
+    height: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: $main-color;
+    margin-top: 0;
   }
 
   .search-container {
+    height: 35%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: $main-color;
   }
+
+  .book-now{
+    display: none;
+  }
+
+  .all-bookings {
+    margin-top: 50%;
+  }
+
+  .room-card {
+    margin: 20px;
+  }
+  // .search-container {
+  // }
 }
 
-@media screen and (max-width: 425px) {
 
+@media screen and (max-width: 425px) {
+  // .sidebar {
+  //   background-color: pink;
+  // }
+
+  .form-element {
+    margin: 5px;
+  }
+
+  .overlook-text {
+    margin-left: 40px;
+  }
+
+  .total-spent {
+    display: none;
+  }
+
+  .welcome-message {
+    margin: 20px 0 0 100px;
+  }
+
+  .user-details {
+    width: 0%;
+  }
+
+  .search-button {
+    margin-top: 20px;
+  }
 }
 
 
