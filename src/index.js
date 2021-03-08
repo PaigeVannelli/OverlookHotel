@@ -51,6 +51,13 @@ function validateLogin(username, password, id) {
     }
 }
 
+
+
+
+
+
+displayUserData(14)
+
 function displayUserData(id) {
     console.log("display")
     hideLoginPage()
@@ -93,14 +100,14 @@ function displayRoomCards(booking) {
         `<article class="room-card" id="${booking.id}">
           <h2 class="title card-text">${booking.roomType}</h2>
           <p class="card-text">date: ${booking.date}<p>
-          <p class="card-text">Cost per night: ${booking.costPerNight}<p>
+          <p class="card-text">Cost: $${booking.costPerNight}<p>
         </article>`
     )
 }
 
 function displayUserInfo(currentUser, totalCost) {
     document.getElementById('welcomeText').innerHTML = `${currentUser.name}`
-    document.getElementById('totalSpent').innerHTML = `Total Spent:  ${totalCost}`
+    document.getElementById('totalSpent').innerHTML = `Total Spent:  $${totalCost}`
 }
 
 
@@ -129,7 +136,11 @@ function searchBookings() {
 function searchRooms(date, roomType) {
     let filteredRoomsByDate = newBookingsRepo.filterByDate(newRoomsRepo.allRooms, date)
     let filteredRoomsByType = newBookingsRepo.filterByType(filteredRoomsByDate, roomType)
-    displayRooms(filteredRoomsByType, date)
+    if (!date) {
+        console.log("specify date")
+    } else {
+        displayRooms(filteredRoomsByType, date)
+    }
 }
 
 function displayRooms(filteredRoomsByType, date) {
@@ -151,7 +162,7 @@ function displayAvailableRooms(userBookings, date) {
           <h2 class="title card-text room-number">#${booking.number}</h2>
           <h2 class="title card-text">${booking.roomType}</h2>
           <p class="card-text">${date}<p>
-          <p class="card-text">bed type: ${booking.bedSize}<p>
+          <p class="card-text">Bed Type: ${booking.bedSize}<p>
           <p class="card-text">Number of beds: ${booking.numBeds}<p>
           <p class="card-text">Cost per night: ${booking.costPerNight}<p>
           <button id="bookNowButton+${booking.number}">BOOK NOW</button>
@@ -179,7 +190,6 @@ function postBooking(roomNumber, dateReformat) {
         "date": dateReformat, 
         "roomNumber": roomNumber
     }
-
     postUserBooking(userBooking)
     .then(confirmation => {
         document.getElementById('pageTitle').innerHTML = 'Room Booked'

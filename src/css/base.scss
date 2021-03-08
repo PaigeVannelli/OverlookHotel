@@ -52,15 +52,20 @@ body {
 .title {
   font-size: 2em;
   font-weight: 800;
+  margin: 25px 25px 25px 10px;
 }
 
 .welcome-text {
-  margin: 15px;
+  margin: 15px 15px 15px 12px;
 }
 
 .sidebar-details {
-  margin: 15px;
+  margin: 35px 15px 15px 15px;
   font-size: 1.5em;
+}
+
+.user-button {
+  @include all-buttons-inputs
 }
 
 .overlook-text{
@@ -137,6 +142,25 @@ body {
   margin: 15px;
 }
 
+.search-button {
+  @include all-buttons-inputs;
+  width: 18em;
+  height: 1.8em;
+  margin-top: 15px;
+}
+
+.input {
+  @include all-buttons-inputs;
+}
+
+.date-label {
+  margin-right: 15px;
+}
+
+.type-label {
+  margin-right: 15px;
+}
+
 //~~~~~~~~~~~ Login Styling ~~~~~~~~~~~~~//
 
 // .login-form-section {
@@ -174,6 +198,10 @@ body {
 
 .login-element {
   margin: 1.5em;
+}
+
+.login-form-button {
+  @include all-buttons-inputs
 }
 
 #blockColorblindContent {
