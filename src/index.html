@@ -25,9 +25,8 @@
           <div class="form-element">
             <label for="dateInput" class="date-label label">Dates: </label>
             <input class="input" id="dateInput" type="date" placeholder="search dates" min="">
-            <p class="date-error hidden" id="dateError">Please specify a date</p>
           </div>
-          <p class="label hidden" id="searchError">Date Required</p>
+          <p class="label error-label hidden" id="searchError">Date Required</p>
           <div class="form-element">
             <label for="roomTypeSearch" class="type-label label">Room: </label>
             <select class="dropdown input" id="roomTypeSearch" name="roomType" label="room-type-input">
@@ -45,8 +44,8 @@
       </section>
     </section>
     <main class="main-content">
-      <p class="500-error" id="errorDisplay"></p>
-      <p class="400-error" id="errorDisplay400"></p>
+      <p class="500-error error-label" id="errorDisplay"></p>
+      <p class="400-error error-label" id="errorDisplay400"></p>
       <div class="all-bookings hidden" id="roomsDisplay">
         <div class="page-title-container">
           <h2 class="page-title" id="pageTitle">Upcoming Reservations</h2>
@@ -75,7 +74,7 @@
             <input class="password-input" id="passwordInput" type="password" placeholder="Password">
           </div>
           <button class="login-form-button login-element" id="loginButton">Log In</button>
-          <p class="login-error-message hidden" id="loginError">Incorrect </p>
+          <p class="login-error-message error-label hidden" id="loginError">Incorrect </p>
         </ul>
       </form>
     </main>

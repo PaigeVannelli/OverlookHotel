@@ -2,10 +2,9 @@
 @import '_mixins';
 @import '_variables';
 @import '_reset';
-// @import url('https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700&subset=latin-ext,cyrillic')
-/* This is an example of using Sass, otherwise plain CSS works too*/
-// $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
+
+
+//~~~~~~~~~~~~ All Styles ~~~~~~~~~~~~~~~~//
 
 * {
   margin: none;
@@ -13,17 +12,15 @@
 }
 
 body {
-  // background: $primary-background;
   display: flex;
   flex-direction: row;
   height: 100%;
-  margin: 0px;
-  padding: 0px;
+  // margin: 0px;
+  // padding: 0px;
   background-image: url("https://images.unsplash.com/photo-1582719508461-905c673771fd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzb3J0fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  // height: 100vh;
 }
 
 //~~~~~~~~~~~~~~ Sidebar Styling ~~~~~~~~~~~//
@@ -34,7 +31,6 @@ body {
   font-family: $primary-font;
   height: 100em;
   width: 20%;
-  // max-width: 20em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,10 +38,6 @@ body {
   left: 3%;
 }
 
-// .sidebar-details {
-//   // position: fixed;
-//   width: 100%;
-// }
 
 .overlook-o {
   font-size: 3em;
@@ -56,22 +48,22 @@ body {
 }
 
 .title {
-  font-size: 1.7em;
-  font-weight: 800;
-  margin: 25px 25px 25px 10px;
+  @include titles;
+  margin: 40px 40px 30px 55px;
 }
 
 .welcome-text {
-  margin: 15px 15px 5px 45px;
+  margin-bottom: 10px;
 }
 
 .welcome-message {
   @include all-buttons-inputs;
-  height: 5em;
-  width: 70%;
+  height: 3em;
+  width: 5em;
   font-size: 1.7em;
   background-color: $main-color;
   margin-left: 2px;
+  margin: 5px 25px 5px 20px;
 }
 
 .sidebar-details {
@@ -79,8 +71,8 @@ body {
   font-size: 1.3em;
 }
 
-.user-button {
-  @include all-buttons-inputs
+.total-spent {
+  text-align: center;
 }
 
 .overlook-text{
@@ -90,14 +82,13 @@ body {
   align-items: flex-end;
 }
 
-//~~~~~~~~~~~~~~~ Main Section Styling ~~~~~~~//
+//~~~~~~~~~~~~ Main Section Styling ~~~~~~~~~~//
 
 .main-content {
-  // background-color: $background-color;
   width: 75%;
   display: flex;
   flex-direction: column;
-  margin: 0 0 0 23%;
+  margin-left: 23%;
 }
 
 .user-bookings {
@@ -105,7 +96,6 @@ body {
   flex-direction: row;
   flex-flow: wrap;
   align-items: center;
-  // justify-content: center;
   justify-content: space-evenly;
 }
 
@@ -134,10 +124,7 @@ body {
 
 .card-text {
   margin: 15px;
-}
-
-.room-number {
-  font-size: 3em;
+  text-align: center;
 }
 
 .room-image {
@@ -149,6 +136,7 @@ body {
 }
 
 .booking-confirmation {
+  @include all-cards;
   height: 50em;
   width: 50%;
   min-width: 25em;
@@ -170,6 +158,10 @@ body {
 .search-container {
   height: 12em;
   width: 100%;
+}
+
+.input {
+  width: 10em;
 }
 
 .form-element {
@@ -194,24 +186,19 @@ body {
   @include all-buttons-inputs;
 }
 
-.date-label {
-  margin-right: 15px;
-}
+// .date-label {
+//   margin-right: 15px;
+// }
 
-.type-label {
+// .type-label {
+//   margin-right: 15px;
+// }
+
+.label {
   margin-right: 15px;
 }
 
 //~~~~~~~~~~~ Login Styling ~~~~~~~~~~~~~//
-
-// .login-form-section {
-//   height: 30em;
-//   width: 70%;
-//   background-color: $highlight-one;
-//   display: flex;
-//   align-content: center;
-//   justify-content: center;
-// }
 
 .login-form {
   height: 30em;
@@ -254,11 +241,9 @@ body {
   .sidebar {
     width: 100%;
     height: 15%;
-    // background-color: yellow;
     flex-direction: column;
     position: absolute;
     left: 0;
-    // max-width: none;
   }
 
   .main-content {
@@ -293,7 +278,6 @@ body {
   .welcome-message {
     height: 2em;
     width: 4em;
-    background-color: $main-color;
     margin-bottom: 30px;
   }
 
@@ -310,7 +294,6 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: $main-color;
     margin-top: 0;
   }
 
@@ -338,8 +321,6 @@ body {
   .room-card {
     margin: 20px;
   }
-  // .search-container {
-  // }
 }
 
 
@@ -361,7 +342,6 @@ body {
     height: 2em;
     width: 4em;
     margin: 20px 0 0 100px;
-    background-color: $main-color;
   }
 
   .user-details {
@@ -372,11 +352,17 @@ body {
   .search-button {
     margin-top: 20px;
   }
-}
 
+  .booking-confirmation {
+    width: 100%;
+  }
+}
 
 //~~~~~~~~~~~~~~~ Other ~~~~~~~~~~~~~~~~//
 
+.error-label {
+  color: red;
+}
 #blockColorblindContent {
   display: none;
 }

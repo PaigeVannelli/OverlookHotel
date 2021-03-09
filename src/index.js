@@ -269,8 +269,8 @@ function displayConfirmation(confirmation, detailedConfirmation) {
     document.getElementById('pageTitle').innerHTML = 'Room Booked'
     allRooms.innerHTML = ''
     allRooms.insertAdjacentHTML('beforeend',
-        `<article class="room-card booking-confirmation" id="${confirmation.newBooking.id}">
-        <img class="room-image" src="${detailedConfirmation.roomImage}" alt="${booking.imageAlt}">
+        `<article class="booking-confirmation" id="${confirmation.newBooking.id}">
+        <img class="room-image" src="${detailedConfirmation.roomImage}" alt="${detailedConfirmation.imageAlt}">
         <div class="card-text-container">
             <p class="title card-text">Congratulations! Your booking was successful. See confirmation details below:</p>
             <h2 class="card-text">Confirmation Number: ${confirmation.newBooking.id}</h2>
