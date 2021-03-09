@@ -217,14 +217,8 @@ body {
   width: 70%;
   min-width: 30em;
   display: flex;
-  align-content: center;
-  justify-content: center;
-}
-
-.login-items {
-  display: flex;
   flex-direction: column;
-  align-items: center;
+  align-content: center;
   justify-content: center;
 }
 
@@ -248,11 +242,13 @@ body {
 
 .login-element {
   margin: 1.5em;
+  text-align: center;
 }
 
 .login-form-button {
   height: 2em;
   width: 8em;
+  align-self: center;
 }
 
 //~~~~~~~~~~~~~~ Media Queries ~~~~~~~~~~//
