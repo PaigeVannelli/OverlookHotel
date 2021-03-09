@@ -9,7 +9,6 @@ export const fetchData = () => {
         .catch(err => displayError(err))
 
     let allRooms = fetch("http://localhost:3001/api/v1/rooms")
-        // .then(checkForError)
         .then(response => response.json())
         .then(roomsData => {
             return roomsData;

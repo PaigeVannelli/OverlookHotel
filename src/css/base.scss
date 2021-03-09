@@ -15,8 +15,6 @@ body {
   display: flex;
   flex-direction: row;
   height: 100%;
-  // margin: 0px;
-  // padding: 0px;
   background-image: url("https://images.unsplash.com/photo-1582719508461-905c673771fd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzb3J0fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -194,14 +192,6 @@ body {
   @include all-buttons-inputs;
 }
 
-// .date-label {
-//   margin-right: 15px;
-// }
-
-// .type-label {
-//   margin-right: 15px;
-// }
-
 .label {
   margin-right: 15px;
 }
@@ -257,9 +247,6 @@ body {
 
 //~~~~~~~~~~~~~~ Media Queries ~~~~~~~~~~//
 
-// @media screen and (max-width: 768px) {
-
-// }
 @media screen and (max-width: 850px) {
   .sidebar {
     width: 100%;
