@@ -31,64 +31,42 @@ To view the code, please ask to be a collaborator and then go to the GitHub repo
 
 ## Functionality
 
-Customers are able to log in using their user name customer plus any number one through 50 and a password of overlook2021. The login page will prompt the user to fix any errors
-with username or password.
+Customers are able to log in using their user name customer plus any number one through 50 and a password of overlook2021. The login page will prompt the user to fix any errors with username or password.
 
-![](https://gyazo.com/ad4002d18abb278cb3ad78deec1da3ae)
+<p align='left'>Main Page</br>
+<img width='1000' height='500' src="./assets/main-page.png">
+</p>
 
-Gameplay:
+Upon loggin in, a customer should see all of their previous bookings as well as any upcoming bookings. Customers will also see a total amount spent on previous bookings. 
 
-Players alternate turns playing cards face-up into the central pile (ex a player can’t deal twice in a row)
-Any player can slap at any time, with several outcomes!
+<p align='left'>Main Page</br>
+<img width='1000' height='500' src="./assets/main-page.png">
+</p>
 
-If a player slaps when a Jack is on top of the central pile, the entire central pile is added to the player’s hand, and their hand is shuffled automatically.
+A customer can search for a new booking on the sidebar and filter by date as well as room type. Once a customer hits search they should see all the available rooms on that date with an option to book. 
 
-![](./assets/slapsjack.gif)
+<p align='left'>Main Page</br>
+<img width='1000' height='500' src="./assets/main-page.png">
+</p>
 
-If a player slaps when a Double or a pair (two cards of the same number - such as two Aces, or two Fives, or two Queens) is on top of the central pile, the entire central pile is added to the player’s hand, and their hand is shuffled automatically.
+Once the customer books a room they will see a bookig confirmation with booking details. The booking will also be displayed in their upcoming bookings. If a customer clicks on their name it will take them back to their homepage view.
 
-![](./assets/slapdouble.gif)
-
-If a player slaps when a Sandwich (two cards of the same number - such as two Aces, or two Fives, or two Queens, separated by a different card in the middle) is on top of the central pile, the entire central pile is added to the player’s hand, and their hand is shuffled automatically.
-
-![](./assets/slapsandwich.gif)
-
-If a player slaps when neither a Jack, Double, or Sandwich is on top of the central pile, the player who slapped loses the card on top of their hand and it is added to the bottom of their opponent’s hand.
-
-![](./assets/badslap.gif)
-
-If one player loses all their cards, they have one chance to not lose and continue the game:
-
-The player with cards left continues to deal from their hand into the central pile (they are now allowed to deal multiple times in a row!)
-
-If the player with cards left deals all their cards into the center without revealing a Jack, the central pile returns to that player’s hand, is shuffled, and the player must continue to deal until a Jack is revealed
-
-When a Jack is revealed, the player who is out of cards can slap it. The central pile is then their new hand, the game continues as normal.
-
-![](./assets/slapbackin.gif)
-
-If however, the player who is out of cards slaps something that is not a Jack, or if the player who still has cards slaps the Jack first, then the player who is out of cards loses and the game is over!
-Doubles and Sandwiches are not valid when one player is completely out of cards - in this case, only a Jack can save them!
-
-![](./assets/slapjackwingame.gif)
-
-The only way the player who still has cards can win is by slapping the Jack before the player without cards left does
-
-![](./assets/badslapwingame.gif)
+<p align='left'>Main Page</br>
+<img width='1000' height='500' src="./assets/main-page.png">
+</p>
 
 
 ## Future Additions
 
 To further the goal of this project, we would like to -
-* Add a slap timeout. When one player has a successful slap, prevent slapping for both players for half a second.
-* Add a button that takes you to instructions
-* Implement jQuery
+* Add a manager class and login that can view all resevrations and delete bookings
+* Add more hotel information 
 
 ## Progression
 
-For a description of project details and breakdown, visit [the project page](https://frontend.turing.io/projects/module-1/slapjack.html) on the curriculum site.
+For a description of project details and breakdown, visit [the project page](https://frontend.turing.io/projects/overlook.html) on the curriculum site.
 
 
 ## Project Board
 
-To view breakdown of steps taken, visit: [the project board](https://github.com/PaigeVannelli/SlapJack/projects/1)
+To view breakdown of steps taken, visit: [the project board](https://github.com/PaigeVannelli/Overlook-Hotel/projects/2)
