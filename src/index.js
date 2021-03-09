@@ -254,7 +254,7 @@ function postBooking(roomNumber, dateReformat) {
         let detailedConfirmation = newRoomsRepo.returnDetailedRoomData(userBookingArray)
         checkRoomType(detailedConfirmation)
         displayConfirmation(confirmation, detailedConfirmation[0])
-        currentUser.userBookings.push(confirmation.newBooking)
+        currentUser.bookRoom(confirmation.newBooking)
     })
 }
 

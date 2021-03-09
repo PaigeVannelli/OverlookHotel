@@ -29,45 +29,44 @@ describe('Test BookingRepo Functionality', function() {
     expect(newBookingsRepo.allBookings).to.equal(allBookings)
   })
 
-  it('should be able to filter through all bookings by a user id', function() {
-    const userBookings = newBookingsRepo.filterByUser(2)
-    expect(userBookings.length).to.equal(2)
+  describe('BookingsRepo Methods', function() {
+
+    it('should be able to filter through all bookings by a user id', function() {
+      const userBookings = newBookingsRepo.filterByUser(2)
+      expect(userBookings.length).to.equal(2)
+    })
+  
+    it('should return no bookings found if user has no bookings', function() {
+      const userBookings = newBookingsRepo.filterByUser(3)
+      expect(userBookings).to.equal('No booking found')
+    })
+  
+    it('should filter rooms by date', function() {
+      const filterByRoom = newBookingsRepo.filterByDate(allRooms, '2020/02/11')
+      expect(filterByRoom.length).to.equal(9)
+    })
+  
+    it('should fiter rooms by type', function() {
+      const filterByDate = newBookingsRepo.filterByDate(allRooms, '2020/02/11')
+      const filterByType = newBookingsRepo.filterByType(filterByDate, 'suite')
+      expect(filterByType.length).to.equal(1)
+    })
+  
+    it('should return all rooms if no room if no room is specified', function() {
+      const filterByDate = newBookingsRepo.filterByDate(allRooms, '2020/02/11')
+      const filterByType = newBookingsRepo.filterByType(filterByDate, 'all rooms')
+      expect(filterByType.length).to.equal(9)
+    })
+  
+    it('should return all room if no rooms are booked', function() {
+      let filteredByDate = newBookingsRepo.filterByDate(allRooms, "2022/02/21")
+      let filterByRoom = newBookingsRepo.filterByType(filteredByDate, 'suite')
+      expect(filterByRoom.length).to.equal(2)
+    })
+  
+    it('should return no available rooms when all rooms are booked', function() {
+      let filteredByDate2 = newBookingsRepo.filterByDate(allRooms, "2021/04/26")
+      expect(filteredByDate2).to.equal('no available rooms')
+    })
   })
-
-  it('should return no bookings found if user has no bookings', function() {
-    const userBookings = newBookingsRepo.filterByUser(3)
-    expect(userBookings).to.equal('No booking found')
-  })
-
-  it('should filter rooms by date', function() {
-    // const filteredByType = newRoomsRepo.filterByType("single room")
-    // const filterByRoom = newBookingsRepo.filterByRoom(filteredByType, '2020/02/11')
-    const filterByRoom = newBookingsRepo.filterByDate(allRooms, '2020/02/11')
-    expect(filterByRoom.length).to.equal(9)
-  })
-
-  it('should fiter rooms by type', function() {
-    const filterByDate = newBookingsRepo.filterByDate(allRooms, '2020/02/11')
-    const filterByType = newBookingsRepo.filterByType(filterByDate, 'suite')
-    expect(filterByType.length).to.equal(1)
-  })
-
-  it('should return all rooms if no room if no room is specified', function() {
-    const filterByDate = newBookingsRepo.filterByDate(allRooms, '2020/02/11')
-    const filterByType = newBookingsRepo.filterByType(filterByDate, 'all rooms')
-    expect(filterByType.length).to.equal(9)
-  })
-
-  // it('should return all room if no rooms are booked', function() {
-  //   const filteredByType = newRoomsRepo.filterByType("single room")
-  //   const filterByRoom = newBookingsRepo.filterByRoom(filteredByType, '2021/02/11')
-  //   expect(filterByRoom.length).to.equal(6)
-  // })
-
-  // it('should return no available rooms when all rooms are booked', function() {
-  //   const filteredByType = newRoomsRepo.filterByType("single room")
-  //   const filterByRoom = newBookingsRepo.filterByRoom(filteredByType, '2021/04/26')
-  //   expect(filterByRoom).to.equal('no available rooms')
-  // })
-
 })
