@@ -34,26 +34,22 @@ To view the code, please ask to be a collaborator and then go to the GitHub repo
 Customers are able to log in using their user name customer plus any number one through 50 and a password of overlook2021. The login page will prompt the user to fix any errors with username or password.
 
 <p align='left'>Main Page</br>
-<img width='1000' height='500' src="./assets/main-page.png">
+<img width='1000' height='500' src="./src/images/login-page.png">
 </p>
 
 Upon loggin in, a customer should see all of their previous bookings as well as any upcoming bookings. Customers will also see a total amount spent on previous bookings. 
 
 <p align='left'>Main Page</br>
-<img width='1000' height='500' src="./assets/main-page.png">
+<img width='1000' height='500' src="./src/images/login-page.png">
 </p>
 
 A customer can search for a new booking on the sidebar and filter by date as well as room type. Once a customer hits search they should see all the available rooms on that date with an option to book. 
 
 <p align='left'>Main Page</br>
-<img width='1000' height='500' src="./assets/main-page.png">
+<img width='1000' height='500' src="./src/images/search.png">
 </p>
 
 Once the customer books a room they will see a bookig confirmation with booking details. The booking will also be displayed in their upcoming bookings. If a customer clicks on their name it will take them back to their homepage view.
-
-<p align='left'>Main Page</br>
-<img width='1000' height='500' src="./assets/main-page.png">
-</p>
 
 
 ## Future Additions
