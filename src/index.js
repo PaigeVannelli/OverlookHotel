@@ -42,6 +42,7 @@ function getToday() {
         month: "2-digit",
         day: "2-digit"
     })
+    document.getElementById('dateInput').setAttribute('min', stringToday)
     today = stringToday.split('-').join('/')
 }
 

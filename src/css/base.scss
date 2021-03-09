@@ -34,6 +34,7 @@ body {
   font-family: $primary-font;
   height: 100em;
   width: 20%;
+  // max-width: 20em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,6 +70,8 @@ body {
   height: 5em;
   width: 70%;
   font-size: 1.7em;
+
+  
 }
 
 .sidebar-details {
@@ -255,6 +258,7 @@ body {
     flex-direction: column;
     position: absolute;
     left: 0;
+    // max-width: none;
   }
 
   .main-content {
@@ -280,6 +284,17 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .welcome-text {
+    display: none;
+  }
+
+  .welcome-message {
+    height: 2em;
+    width: 4em;
+    background-color: $main-color;
+    margin-bottom: 30px;
   }
 
   .total-spent {
@@ -312,6 +327,10 @@ body {
     display: none;
   }
 
+  .search-button {
+    margin-top: 0;
+  }
+
   .all-bookings {
     margin-top: 50%;
   }
@@ -325,9 +344,6 @@ body {
 
 
 @media screen and (max-width: 425px) {
-  // .sidebar {
-  //   background-color: pink;
-  // }
 
   .form-element {
     margin: 5px;
@@ -342,15 +358,15 @@ body {
   }
 
   .welcome-message {
+    height: 2em;
+    width: 4em;
     margin: 20px 0 0 100px;
-  }
-
-  .welcome-text {
-    background-color: yellow;
+    background-color: $main-color;
   }
 
   .user-details {
     width: 0%;
+    margin-right: 8em;
   }
 
   .search-button {
