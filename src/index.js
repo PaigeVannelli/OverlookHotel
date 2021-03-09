@@ -1,15 +1,12 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
 import User from './User'
-import fetchData from './get-data'
+import {fetchData} from './get-data'
 import BookingsRepo from './BookingsRepo'
 import RoomsRepo from './RoomsRepo'
 import postUserBooking from './post-data'
 import getUserData from './get-user-data'
-// An example of how you tell webpack to use a CSS (SCSS) file
+
 import './css/base.scss';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import './images/single.jpg'
 import './images/juniorSuite.jpg'
@@ -21,7 +18,6 @@ let newRoomsRepo
 let newBookingsRepo
 let searchDate
 let today
-
 
 const searchBookingsButton = document.getElementById('searchBookingsButton')
 const allRooms = document.getElementById('allRooms')
@@ -50,7 +46,7 @@ function userLogin() {
     event.preventDefault()
     display('loginError', true)
     const username = document.getElementById('usernameInput').value
-    let id = parseInt(username.split('r')[1])
+    const id = parseInt(username.split('r')[1])
     const password = document.getElementById('passwordInput').value
     validateLogin(username, password, id)
 }
@@ -72,8 +68,6 @@ function validateLogin(username, password, id) {
     }
 }
 
-displayUserData(14)
-
 function displayUserData(id) {
     console.log("display")
     hideLoginPage()
@@ -82,7 +76,6 @@ function displayUserData(id) {
         currentUser = new User(id, allData.allUserData)
         newBookingsRepo = new BookingsRepo(allData.allBookings)
         newRoomsRepo = new RoomsRepo(allData.allRooms)
-        // do I want to move this function into find details below?
         let userBookings = newBookingsRepo.filterByUser(currentUser.id)
         currentUser.userBookings = userBookings
         findDetailedUserData(newRoomsRepo, userBookings)

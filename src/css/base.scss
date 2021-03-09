@@ -64,6 +64,10 @@ body {
   background-color: $main-color;
   margin-left: 2px;
   margin: 5px 25px 5px 20px;
+
+  &:hover {
+    background-color: $card-background-color;
+  }
 }
 
 .sidebar-details {
@@ -206,7 +210,6 @@ body {
   display: flex;
   align-content: center;
   justify-content: center;
-  // background-color: $card-background-color;
 }
 
 .login-items {
@@ -224,12 +227,23 @@ body {
   margin-right: 8px;
 }
 
+.login-label {
+  font-size: 1.8em;
+}
+
+.login-input {
+  height: 1.8em;
+  width: 15em;
+  border: none;
+}
+
 .login-element {
   margin: 1.5em;
 }
 
 .login-form-button {
-  @include all-buttons-inputs
+  height: 2em;
+  width: 8em;
 }
 
 //~~~~~~~~~~~~~~ Media Queries ~~~~~~~~~~//
