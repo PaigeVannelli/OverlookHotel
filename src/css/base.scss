@@ -62,7 +62,7 @@ body {
 }
 
 .welcome-text {
-  margin: 15px 15px 15px 12px;
+  margin: 15px 15px 5px 45px;
 }
 
 .welcome-message {
@@ -70,8 +70,8 @@ body {
   height: 5em;
   width: 70%;
   font-size: 1.7em;
-
-  
+  background-color: $main-color;
+  margin-left: 2px;
 }
 
 .sidebar-details {
