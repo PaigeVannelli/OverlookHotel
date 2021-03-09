@@ -251,6 +251,10 @@ body {
   align-self: center;
 }
 
+.login-error-message {
+  align-self: center;
+}
+
 //~~~~~~~~~~~~~~ Media Queries ~~~~~~~~~~//
 
 // @media screen and (max-width: 768px) {
@@ -390,7 +394,9 @@ body {
 
 .error-label {
   color: red;
+  align-self: center;
 }
+
 #blockColorblindContent {
   display: none;
 }
