@@ -1,105 +1,94 @@
-# Webpack Starter Kit
-
-## Clone This Repo
-TEST 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
-
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
-
-Now try to commit something and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
-
-## Setup
-
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo. 
-
-Then install the library dependencies. Run:
-
-```bash
-npm install
-```
-
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with some `h1` text, Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
-
-## Where to Add Your Code
-
-### JavaScript
-
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
-
-**Create all of your feature code files in the `src` directory.**
-
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
-
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
-
-### HTML
-
-Add the HTML you need in the `index.html` file in the `./src` directory. There is some boilerplate HTML that exists from the start that you can modify.
-
-### CSS (SCSS/SASS)
-
-This project is setup to use SCSS/SASS files by default instead of your regular CSS files. Add your SCSS files in the `src/css` directory. There is a `base.scss` file already there, but you can change this file and add multiple SCSS files in this directory.
-
-This might sound weird, but you need to `import` your SCSS files in the JavaScript entry file (`index.js`) for the styles to be applied to your HTML. The example `base.scss` file has already been imported in the JavaScript entry file as an example.
-
-### Images
-
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`index.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
-
-## How to View Your Code in Action
-
-In the terminal, run:
-
-```bash
-npm start
-```
-
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
-
-```bash
-Project is running at http://localhost:8080/
-```
-
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
 
 ---
-
-## Test Files Organization
-
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
+Overlook Hotel
 ---
+## Contributors
 
-## Linting Your Code
+* Paige Vannelli - https://www.linkedin.com/in/paigevannelli/ / https://github.com/PaigeVannelli
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
+## Overview
 
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory. 
+For this project, built a hotel management tool for hotel customers to manage room bookings and calculate bills.
 
-## Webpack?
+## Learning Goals
 
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
+* Use OOP to drive the design of the application and the code
+* Work with an API to send and receive data
+* Solidify the code review process
+* Create a robust test suite that thoroughly tests all functionality of a client-side application
 
-## Deploying to GitHub Pages
+## Technologies Used  
 
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
+* JavaScript
+* Sass
+* HTML
+* Mocha and Chia testing
+* fetch API
 
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
+## Set Up and Instructions
 
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+To view the code, please ask to be a collaborator and then go to the GitHub repo (https://github.com/PaigeVannelli/SlapJack).
+
+## Functionality
+
+Customers are able to log in using their user name customer plus any number one through 50 and a password of overlook2021. The login page will prompt the user to fix any errors
+with username or password.
+
+![](./assets/customer-login.gif)
+
+Gameplay:
+
+Players alternate turns playing cards face-up into the central pile (ex a player can’t deal twice in a row)
+Any player can slap at any time, with several outcomes!
+
+If a player slaps when a Jack is on top of the central pile, the entire central pile is added to the player’s hand, and their hand is shuffled automatically.
+
+![](./assets/slapsjack.gif)
+
+If a player slaps when a Double or a pair (two cards of the same number - such as two Aces, or two Fives, or two Queens) is on top of the central pile, the entire central pile is added to the player’s hand, and their hand is shuffled automatically.
+
+![](./assets/slapdouble.gif)
+
+If a player slaps when a Sandwich (two cards of the same number - such as two Aces, or two Fives, or two Queens, separated by a different card in the middle) is on top of the central pile, the entire central pile is added to the player’s hand, and their hand is shuffled automatically.
+
+![](./assets/slapsandwich.gif)
+
+If a player slaps when neither a Jack, Double, or Sandwich is on top of the central pile, the player who slapped loses the card on top of their hand and it is added to the bottom of their opponent’s hand.
+
+![](./assets/badslap.gif)
+
+If one player loses all their cards, they have one chance to not lose and continue the game:
+
+The player with cards left continues to deal from their hand into the central pile (they are now allowed to deal multiple times in a row!)
+
+If the player with cards left deals all their cards into the center without revealing a Jack, the central pile returns to that player’s hand, is shuffled, and the player must continue to deal until a Jack is revealed
+
+When a Jack is revealed, the player who is out of cards can slap it. The central pile is then their new hand, the game continues as normal.
+
+![](./assets/slapbackin.gif)
+
+If however, the player who is out of cards slaps something that is not a Jack, or if the player who still has cards slaps the Jack first, then the player who is out of cards loses and the game is over!
+Doubles and Sandwiches are not valid when one player is completely out of cards - in this case, only a Jack can save them!
+
+![](./assets/slapjackwingame.gif)
+
+The only way the player who still has cards can win is by slapping the Jack before the player without cards left does
+
+![](./assets/badslapwingame.gif)
+
+
+## Future Additions
+
+To further the goal of this project, we would like to -
+* Add a slap timeout. When one player has a successful slap, prevent slapping for both players for half a second.
+* Add a button that takes you to instructions
+* Implement jQuery
+
+## Progression
+
+For a description of project details and breakdown, visit [the project page](https://frontend.turing.io/projects/module-1/slapjack.html) on the curriculum site.
+
+
+## Project Board
+
+To view breakdown of steps taken, visit: [the project board](https://github.com/PaigeVannelli/SlapJack/projects/1)
