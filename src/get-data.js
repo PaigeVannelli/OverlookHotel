@@ -1,6 +1,6 @@
 // import {checkForError} from './post-data'
 
-const fetchData = () => {
+export const fetchData = () => {
     let allUserData =  fetch("http://localhost:3001/api/v1/customers")
         .then(response => response.json())
         .then(userData => {
@@ -9,7 +9,6 @@ const fetchData = () => {
         .catch(err => displayError(err))
 
     let allRooms = fetch("http://localhost:3001/api/v1/rooms")
-        // .then(checkForError)
         .then(response => response.json())
         .then(roomsData => {
             return roomsData;
@@ -40,4 +39,11 @@ export const displayError = (errorMessage) => {
       errorDisplay.innerText = message;
 }
 
-export default fetchData
+export const checkForError = response => {
+    if (!response.ok) {
+        document.getElementById('errorDisplay400').innerText = `${response.status} Please check all fields are filled out`
+        throw new Error('Please check all fields are filled out');
+    } else {
+        return response.json();
+    }
+}

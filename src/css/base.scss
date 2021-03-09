@@ -2,10 +2,9 @@
 @import '_mixins';
 @import '_variables';
 @import '_reset';
-// @import url('https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700&subset=latin-ext,cyrillic')
-/* This is an example of using Sass, otherwise plain CSS works too*/
-// $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
+
+
+//~~~~~~~~~~~~ All Styles ~~~~~~~~~~~~~~~~//
 
 * {
   margin: none;
@@ -13,17 +12,13 @@
 }
 
 body {
-  // background: $primary-background;
   display: flex;
   flex-direction: row;
   height: 100%;
-  margin: 0px;
-  padding: 0px;
   background-image: url("https://images.unsplash.com/photo-1582719508461-905c673771fd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzb3J0fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  // height: 100vh;
 }
 
 //~~~~~~~~~~~~~~ Sidebar Styling ~~~~~~~~~~~//
@@ -34,7 +29,6 @@ body {
   font-family: $primary-font;
   height: 100em;
   width: 20%;
-  // max-width: 20em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,45 +36,44 @@ body {
   left: 3%;
 }
 
-// .sidebar-details {
-//   // position: fixed;
-//   width: 100%;
-// }
 
 .overlook-o {
   font-size: 3em;
+  font-family: $secondary-font;
 }
 
 .overlook {
   margin-bottom: 20px;
+  font-family: $secondary-font;
 }
 
 .title {
-  font-size: 1.7em;
-  font-weight: 800;
-  margin: 25px 25px 25px 10px;
+  @include titles;
+  margin: 40px 40px 30px 0
 }
 
 .welcome-text {
-  margin: 15px 15px 5px 45px;
+  margin-bottom: 10px;
 }
 
 .welcome-message {
   @include all-buttons-inputs;
-  height: 5em;
-  width: 70%;
+  height: 3em;
+  width: 5em;
   font-size: 1.7em;
   background-color: $main-color;
   margin-left: 2px;
+  margin: 5px 25px 5px 0;
+  text-align:left;
+
+  &:hover {
+    background-color: $card-background-color;
+  }
 }
 
 .sidebar-details {
-  margin: 35px 15px 15px 15px;
+  margin: 35px 15px 15px 0;
   font-size: 1.3em;
-}
-
-.user-button {
-  @include all-buttons-inputs
 }
 
 .overlook-text{
@@ -90,14 +83,13 @@ body {
   align-items: flex-end;
 }
 
-//~~~~~~~~~~~~~~~ Main Section Styling ~~~~~~~//
+//~~~~~~~~~~~~ Main Section Styling ~~~~~~~~~~//
 
 .main-content {
-  // background-color: $background-color;
   width: 75%;
   display: flex;
   flex-direction: column;
-  margin: 0 0 0 23%;
+  margin-left: 23%;
 }
 
 .user-bookings {
@@ -105,7 +97,6 @@ body {
   flex-direction: row;
   flex-flow: wrap;
   align-items: center;
-  // justify-content: center;
   justify-content: space-evenly;
 }
 
@@ -133,11 +124,13 @@ body {
 }
 
 .card-text {
-  margin: 15px;
+  margin: 5px;
+  text-align: left;
 }
 
-.room-number {
-  font-size: 3em;
+.card-title {
+  text-align: center;
+  margin: 20px 0 0 0
 }
 
 .room-image {
@@ -149,6 +142,7 @@ body {
 }
 
 .booking-confirmation {
+  @include all-cards;
   height: 50em;
   width: 50%;
   min-width: 25em;
@@ -158,7 +152,7 @@ body {
 //~~~~~~~~~~~ Search Form Styling ~~~~~~~~~~~~~//
 
 .search-form {
-  height: 12em;
+  height: 25em;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -168,18 +162,22 @@ body {
 }
 
 .search-container {
-  height: 12em;
-  width: 100%;
+  height: 25em;
+  width: 90%;
+}
+
+.input {
+  width: 10em;
 }
 
 .form-element {
-  margin: 15px;
+  margin: 15px 15px 15px 0;
 }
 
 .search-button-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .search-button {
@@ -194,38 +192,23 @@ body {
   @include all-buttons-inputs;
 }
 
-.date-label {
-  margin-right: 15px;
-}
-
-.type-label {
+.label {
   margin-right: 15px;
 }
 
 //~~~~~~~~~~~ Login Styling ~~~~~~~~~~~~~//
 
-// .login-form-section {
-//   height: 30em;
-//   width: 70%;
-//   background-color: $highlight-one;
-//   display: flex;
-//   align-content: center;
-//   justify-content: center;
-// }
-
 .login-form {
+  background-color: $card-background-color;
+  opacity: 90%;
+  border-radius: 3%;
+  margin: 20% 0 0 20%;
   height: 30em;
   width: 70%;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  // background-color: $card-background-color;
-}
-
-.login-items {
+  min-width: 30em;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-content: center;
   justify-content: center;
 }
 
@@ -237,28 +220,40 @@ body {
   margin-right: 8px;
 }
 
+.login-label {
+  font-size: 1.8em;
+}
+
+.login-input {
+  height: 1.8em;
+  width: 15em;
+  border: none;
+}
+
 .login-element {
   margin: 1.5em;
+  text-align: center;
 }
 
 .login-form-button {
-  @include all-buttons-inputs
+  height: 2em;
+  width: 8em;
+  align-self: center;
+}
+
+.login-error-message {
+  align-self: center;
 }
 
 //~~~~~~~~~~~~~~ Media Queries ~~~~~~~~~~//
 
-// @media screen and (max-width: 768px) {
-
-// }
 @media screen and (max-width: 850px) {
   .sidebar {
     width: 100%;
     height: 15%;
-    // background-color: yellow;
     flex-direction: column;
     position: absolute;
     left: 0;
-    // max-width: none;
   }
 
   .main-content {
@@ -293,7 +288,6 @@ body {
   .welcome-message {
     height: 2em;
     width: 4em;
-    background-color: $main-color;
     margin-bottom: 30px;
   }
 
@@ -310,7 +304,6 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: $main-color;
     margin-top: 0;
   }
 
@@ -338,8 +331,11 @@ body {
   .room-card {
     margin: 20px;
   }
-  // .search-container {
-  // }
+
+  .login-form {
+    width: 100%;
+    margin: 60% 0 0 0;
+  }
 }
 
 
@@ -361,7 +357,6 @@ body {
     height: 2em;
     width: 4em;
     margin: 20px 0 0 100px;
-    background-color: $main-color;
   }
 
   .user-details {
@@ -372,10 +367,22 @@ body {
   .search-button {
     margin-top: 20px;
   }
+
+  .booking-confirmation {
+    width: 100%;
+  }
+
+  .login-form {
+    width: 100%;
+  }
 }
 
-
 //~~~~~~~~~~~~~~~ Other ~~~~~~~~~~~~~~~~//
+
+.error-label {
+  color: red;
+  align-self: center;
+}
 
 #blockColorblindContent {
   display: none;

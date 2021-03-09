@@ -11,23 +11,19 @@
           <h1 class="overlook">verlook Hotel</h1>
         </div>
         <section class="user-details hidden" id="userDetails">
-          <!-- add hidden above -->
           <h2 class="welcome-text title">Welcome</h2>
           <button class='welcome-message' id="userProfileButton">name</button>
-            <!-- <h2 class="welcome-text title" id="welcomeText">name</h2> -->
           <p class="total-spent sidebar-details" id="totalSpent">Total Spent: </p>
         </section>
       </div>
       <section class="search-container hidden" id="searchForm">
-        <!-- add hidden above -->
         <form class="search-form">
           <h2 class="title book-now">Book Now</h2>
           <div class="form-element">
             <label for="dateInput" class="date-label label">Dates: </label>
             <input class="input" id="dateInput" type="date" placeholder="search dates" min="">
-            <p class="date-error hidden" id="dateError">Please specify a date</p>
           </div>
-          <p class="label hidden" id="searchError">Date Required</p>
+          <p class="label error-label hidden" id="searchError">Date Required</p>
           <div class="form-element">
             <label for="roomTypeSearch" class="type-label label">Room: </label>
             <select class="dropdown input" id="roomTypeSearch" name="roomType" label="room-type-input">
@@ -45,8 +41,8 @@
       </section>
     </section>
     <main class="main-content">
-      <p class="500-error" id="errorDisplay"></p>
-      <p class="400-error" id="errorDisplay400"></p>
+      <p class="500-error error-label" id="errorDisplay"></p>
+      <p class="400-error error-label" id="errorDisplay400"></p>
       <div class="all-bookings hidden" id="roomsDisplay">
         <div class="page-title-container">
           <h2 class="page-title" id="pageTitle">Upcoming Reservations</h2>
@@ -64,19 +60,17 @@
           </section>
         </div>
       </div>
-      <form class="login-form hidden" id="loginForm">
-        <ul class="login-items">
+      <form class="login-form" id="loginForm">
           <div class="login-element">
-            <label for="usernameInput" class="username-label label">Username: </label>
-            <input class="email-input" id="usernameInput" type="text" placeholder="user123">
+            <label for="usernameInput" class="username-label login-label">Username: </label>
+            <input class="email-input login-input" id="usernameInput" type="text" placeholder="user123">
           </div>
           <div class="login-element">
-            <label for="passwordInput" class="password-label label">Password: </label>
-            <input class="password-input" id="passwordInput" type="password" placeholder="Password">
+            <label for="passwordInput" class="password-label login-label">Password: </label>
+            <input class="password-input login-input" id="passwordInput" type="password" placeholder="Password">
           </div>
           <button class="login-form-button login-element" id="loginButton">Log In</button>
-          <p class="login-error-message hidden" id="loginError">Incorrect </p>
-        </ul>
+          <p class="login-error-message error-label hidden" id="loginError">Incorrect </p>
       </form>
     </main>
   </body>

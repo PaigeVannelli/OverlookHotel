@@ -1,15 +1,12 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
 import User from './User'
-import fetchData from './get-data'
+import {fetchData} from './get-data'
 import BookingsRepo from './BookingsRepo'
 import RoomsRepo from './RoomsRepo'
 import postUserBooking from './post-data'
 import getUserData from './get-user-data'
-// An example of how you tell webpack to use a CSS (SCSS) file
+
 import './css/base.scss';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 import './images/single.jpg'
 import './images/juniorSuite.jpg'
@@ -21,7 +18,6 @@ let newRoomsRepo
 let newBookingsRepo
 let searchDate
 let today
-
 
 const searchBookingsButton = document.getElementById('searchBookingsButton')
 const allRooms = document.getElementById('allRooms')
@@ -50,7 +46,7 @@ function userLogin() {
     event.preventDefault()
     display('loginError', true)
     const username = document.getElementById('usernameInput').value
-    let id = parseInt(username.split('r')[1])
+    const id = parseInt(username.split('r')[1])
     const password = document.getElementById('passwordInput').value
     validateLogin(username, password, id)
 }
@@ -72,8 +68,6 @@ function validateLogin(username, password, id) {
     }
 }
 
-displayUserData(14)
-
 function displayUserData(id) {
     console.log("display")
     hideLoginPage()
@@ -82,7 +76,6 @@ function displayUserData(id) {
         currentUser = new User(id, allData.allUserData)
         newBookingsRepo = new BookingsRepo(allData.allBookings)
         newRoomsRepo = new RoomsRepo(allData.allRooms)
-        // do I want to move this function into find details below?
         let userBookings = newBookingsRepo.filterByUser(currentUser.id)
         currentUser.userBookings = userBookings
         findDetailedUserData(newRoomsRepo, userBookings)
@@ -144,8 +137,8 @@ function displayUpcoming(upcoming) {
         allRooms.insertAdjacentHTML('beforeend',
             `<article class="room-card" id="${booking.id}">
             <img class="room-image" src="${booking.roomImage}" alt="${booking.imageAlt}">
+            <h2 class="title card-title">#${booking.roomNumber} ${booking.roomType}</h2>
             <div class="card-text-container">
-                <h2 class="title card-text">#${booking.roomNumber} ${booking.roomType}</h2>
                 <p class="card-text">date: ${booking.date}<p>
                 <p class="card-text">${booking.numBeds} ${booking.bedSize}<p>
                 <p class="card-text">$${booking.costPerNight} total<p>
@@ -161,8 +154,8 @@ function displayPreviousBookings(previous) {
         previousBookings.insertAdjacentHTML('beforeend',
                 `<article class="room-card" id="${booking.id}">
                 <img class="room-image" src="${booking.roomImage}" alt="${booking.imageAlt}">
+                <h2 class="title card-title">#${booking.roomNumber} ${booking.roomType}</h2>
                 <div class="card-text-container">
-                    <h2 class="title card-text">#${booking.roomNumber} ${booking.roomType}</h2>
                     <p class="card-text">date: ${booking.date}<p>
                     <p class="card-text">${booking.numBeds} ${booking.bedSize}<p>
                     <p class="card-text">$${booking.costPerNight} total<p>
@@ -221,8 +214,8 @@ function displayAvailableRooms(userBookings, date) {
         allRooms.insertAdjacentHTML('beforeend',
         `<article class="room-card" id="${booking.id}">
           <img class="room-image" src="${booking.roomImage}" alt="${booking.imageAlt}">
+          <h2 class="title card-title">#${booking.number} ${booking.roomType}</h2>
           <div class="card-text-container">
-          <h2 class="title card-text">#${booking.number} ${booking.roomType}</h2>
           <p class="card-text">${date}<p>
           <p class="card-text">${booking.numBeds} ${booking.bedSize}<p>
           <p class="card-text">$${booking.costPerNight} total<p>
@@ -252,7 +245,7 @@ function postBooking(roomNumber, dateReformat) {
     let userBooking = {
         "userID": currentUser.id,
         "date": dateReformat, 
-        "roomNumber": roomNumber
+        "roomNumber": roomNumber,
     }
     postUserBooking(userBooking)
     .then(confirmation => {
@@ -261,7 +254,7 @@ function postBooking(roomNumber, dateReformat) {
         let detailedConfirmation = newRoomsRepo.returnDetailedRoomData(userBookingArray)
         checkRoomType(detailedConfirmation)
         displayConfirmation(confirmation, detailedConfirmation[0])
-        currentUser.userBookings.push(confirmation.newBooking)
+        currentUser.bookRoom(confirmation.newBooking)
     })
 }
 
@@ -269,11 +262,11 @@ function displayConfirmation(confirmation, detailedConfirmation) {
     document.getElementById('pageTitle').innerHTML = 'Room Booked'
     allRooms.innerHTML = ''
     allRooms.insertAdjacentHTML('beforeend',
-        `<article class="room-card booking-confirmation" id="${confirmation.newBooking.id}">
-        <img class="room-image" src="${detailedConfirmation.roomImage}" alt="${booking.imageAlt}">
+        `<article class="booking-confirmation" id="${confirmation.newBooking.id}">
+        <img class="room-image" src="${detailedConfirmation.roomImage}" alt="${detailedConfirmation.imageAlt}">
+        <p class="title card-title">Congratulations! Your booking was successful. See confirmation details below:</p>
+        <h2 class="title card-title">Confirmation Number: ${confirmation.newBooking.id}</h2>
         <div class="card-text-container">
-            <p class="title card-text">Congratulations! Your booking was successful. See confirmation details below:</p>
-            <h2 class="card-text">Confirmation Number: ${confirmation.newBooking.id}</h2>
             <h2 class="card-text">#${confirmation.newBooking.roomNumber} ${detailedConfirmation.roomType}</h2>
             <p class="card-text">${searchDate}<p>
             <p class="card-text">${detailedConfirmation.numBeds} ${detailedConfirmation.bedSize}<p>
