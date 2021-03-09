@@ -41,15 +41,17 @@ body {
 
 .overlook-o {
   font-size: 3em;
+  font-family: $secondary-font;
 }
 
 .overlook {
   margin-bottom: 20px;
+  font-family: $secondary-font;
 }
 
 .title {
   @include titles;
-  margin: 40px 40px 30px 55px;
+  margin: 40px 40px 30px 0
 }
 
 .welcome-text {
@@ -63,7 +65,8 @@ body {
   font-size: 1.7em;
   background-color: $main-color;
   margin-left: 2px;
-  margin: 5px 25px 5px 20px;
+  margin: 5px 25px 5px 0;
+  text-align:left;
 
   &:hover {
     background-color: $card-background-color;
@@ -71,12 +74,8 @@ body {
 }
 
 .sidebar-details {
-  margin: 35px 15px 15px 15px;
+  margin: 35px 15px 15px 0;
   font-size: 1.3em;
-}
-
-.total-spent {
-  text-align: center;
 }
 
 .overlook-text{
@@ -127,8 +126,13 @@ body {
 }
 
 .card-text {
-  margin: 15px;
+  margin: 5px;
+  text-align: left;
+}
+
+.card-title {
   text-align: center;
+  margin: 20px 0 0 0
 }
 
 .room-image {
@@ -150,7 +154,7 @@ body {
 //~~~~~~~~~~~ Search Form Styling ~~~~~~~~~~~~~//
 
 .search-form {
-  height: 12em;
+  height: 25em;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -160,8 +164,8 @@ body {
 }
 
 .search-container {
-  height: 12em;
-  width: 100%;
+  height: 25em;
+  width: 90%;
 }
 
 .input {
@@ -169,13 +173,13 @@ body {
 }
 
 .form-element {
-  margin: 15px;
+  margin: 15px 15px 15px 0;
 }
 
 .search-button-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .search-button {
@@ -205,8 +209,13 @@ body {
 //~~~~~~~~~~~ Login Styling ~~~~~~~~~~~~~//
 
 .login-form {
+  background-color: $card-background-color;
+  opacity: 90%;
+  border-radius: 3%;
+  margin: 20% 0 0 20%;
   height: 30em;
   width: 70%;
+  min-width: 30em;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -335,6 +344,11 @@ body {
   .room-card {
     margin: 20px;
   }
+
+  .login-form {
+    width: 100%;
+    margin: 60% 0 0 0;
+  }
 }
 
 
@@ -368,6 +382,10 @@ body {
   }
 
   .booking-confirmation {
+    width: 100%;
+  }
+
+  .login-form {
     width: 100%;
   }
 }

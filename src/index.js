@@ -137,8 +137,8 @@ function displayUpcoming(upcoming) {
         allRooms.insertAdjacentHTML('beforeend',
             `<article class="room-card" id="${booking.id}">
             <img class="room-image" src="${booking.roomImage}" alt="${booking.imageAlt}">
+            <h2 class="title card-title">#${booking.roomNumber} ${booking.roomType}</h2>
             <div class="card-text-container">
-                <h2 class="title card-text">#${booking.roomNumber} ${booking.roomType}</h2>
                 <p class="card-text">date: ${booking.date}<p>
                 <p class="card-text">${booking.numBeds} ${booking.bedSize}<p>
                 <p class="card-text">$${booking.costPerNight} total<p>
@@ -154,8 +154,8 @@ function displayPreviousBookings(previous) {
         previousBookings.insertAdjacentHTML('beforeend',
                 `<article class="room-card" id="${booking.id}">
                 <img class="room-image" src="${booking.roomImage}" alt="${booking.imageAlt}">
+                <h2 class="title card-title">#${booking.roomNumber} ${booking.roomType}</h2>
                 <div class="card-text-container">
-                    <h2 class="title card-text">#${booking.roomNumber} ${booking.roomType}</h2>
                     <p class="card-text">date: ${booking.date}<p>
                     <p class="card-text">${booking.numBeds} ${booking.bedSize}<p>
                     <p class="card-text">$${booking.costPerNight} total<p>
@@ -214,8 +214,8 @@ function displayAvailableRooms(userBookings, date) {
         allRooms.insertAdjacentHTML('beforeend',
         `<article class="room-card" id="${booking.id}">
           <img class="room-image" src="${booking.roomImage}" alt="${booking.imageAlt}">
+          <h2 class="title card-title">#${booking.number} ${booking.roomType}</h2>
           <div class="card-text-container">
-          <h2 class="title card-text">#${booking.number} ${booking.roomType}</h2>
           <p class="card-text">${date}<p>
           <p class="card-text">${booking.numBeds} ${booking.bedSize}<p>
           <p class="card-text">$${booking.costPerNight} total<p>
@@ -264,9 +264,9 @@ function displayConfirmation(confirmation, detailedConfirmation) {
     allRooms.insertAdjacentHTML('beforeend',
         `<article class="booking-confirmation" id="${confirmation.newBooking.id}">
         <img class="room-image" src="${detailedConfirmation.roomImage}" alt="${detailedConfirmation.imageAlt}">
+        <p class="title card-title">Congratulations! Your booking was successful. See confirmation details below:</p>
+        <h2 class="title card-title">Confirmation Number: ${confirmation.newBooking.id}</h2>
         <div class="card-text-container">
-            <p class="title card-text">Congratulations! Your booking was successful. See confirmation details below:</p>
-            <h2 class="card-text">Confirmation Number: ${confirmation.newBooking.id}</h2>
             <h2 class="card-text">#${confirmation.newBooking.roomNumber} ${detailedConfirmation.roomType}</h2>
             <p class="card-text">${searchDate}<p>
             <p class="card-text">${detailedConfirmation.numBeds} ${detailedConfirmation.bedSize}<p>
