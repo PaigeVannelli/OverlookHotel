@@ -34,7 +34,7 @@ To view the code, please ask to be a collaborator and then go to the GitHub repo
 Customers are able to log in using their user name customer plus any number one through 50 and a password of overlook2021. The login page will prompt the user to fix any errors
 with username or password.
 
-![]('http://www.giphy.com/gifs/wIUXSmjwMaVGbhlns4')
+![](https://gyazo.com/ad4002d18abb278cb3ad78deec1da3ae)
 
 Gameplay:
 
