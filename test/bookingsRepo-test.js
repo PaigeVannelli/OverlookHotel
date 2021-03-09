@@ -9,14 +9,12 @@ const expect = chai.expect;
 
 describe('Test BookingRepo Functionality', function() {
 
-  let currentUser;
   let id;
   let customerData = customers;
   let bookingsData = bookings;
   let allBookings = bookings;
   let newBookingsRepo 
   let allRooms = rooms;
-  let newRoomsRepo
 
   beforeEach(function() {
     id = 3

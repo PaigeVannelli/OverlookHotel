@@ -9,7 +9,6 @@ const expect = chai.expect;
 
 describe('RoomRepo Tests', function() {
 
-  let currentUser;
   let id;
   let customerData = customers;
   let bookingsData = bookings;

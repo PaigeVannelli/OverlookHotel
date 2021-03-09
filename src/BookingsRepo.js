@@ -16,7 +16,7 @@ class BookingsRepo {
 
     filterByDate(allRooms, date) { 
         let bookedRooms = this.allBookings.filter(booking => {
-            return booking.date == date
+            return booking.date === date
         })
         let availableRooms = allRooms.filter(room => {
             return !bookedRooms.some(booking => {

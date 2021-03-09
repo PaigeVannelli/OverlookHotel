@@ -245,7 +245,7 @@ function postBooking(roomNumber, dateReformat) {
     let userBooking = {
         "userID": currentUser.id,
         "date": dateReformat, 
-        "roomNumber": roomNumber
+        "roomNumber": roomNumber,
     }
     postUserBooking(userBooking)
     .then(confirmation => {

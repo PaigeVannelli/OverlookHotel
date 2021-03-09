@@ -10,7 +10,8 @@ function postUserBooking(userBooking) {
     })
     .then(response => response.json())
     .then(finalData => {
-        return finalData})
+        return finalData
+    })
     .catch(err => displayError(err))
 }
 
