@@ -15,6 +15,8 @@ describe('Test BookingRepo Functionality', function() {
   let allBookings = bookings;
   let newBookingsRepo 
   let allRooms = rooms;
+  let newRoomsRepo
+  let currentUser
 
   beforeEach(function() {
     id = 3
